@@ -1,0 +1,426 @@
+[33mcommit 489c9fc43634b7b03afddf6bf2ea487d20af54ac[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Wangtao233333 <1049213433@qq.com>
+Date:   Fri Mar 18 02:20:31 2022 +0800
+
+    11
+
+[1mdiff --git a/.github/dependabot.yml b/.github/dependabot.yml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..93385d9[m
+[1m--- /dev/null[m
+[1m+++ b/.github/dependabot.yml[m
+[36m@@ -0,0 +1,7 @@[m
+[32m+[m[32mversion: 2[m
+[32m+[m[32mupdates:[m
+[32m+[m[32m- package-ecosystem: npm[m
+[32m+[m[32m  directory: "/"[m
+[32m+[m[32m  schedule:[m
+[32m+[m[32m    interval: daily[m
+[32m+[m[32m  open-pull-requests-limit: 20[m
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..63f307b[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,8 @@[m
+[32m+[m[32m.DS_Store[m
+[32m+[m[32mThumbs.db[m
+[32m+[m[32mdb.json[m
+[32m+[m[32m*.log[m
+[32m+[m[32mnode_modules/[m
+[32m+[m[32mpublic/[m
+[32m+[m[32m.deploy*/[m
+[32m+[m[32m_multiconfig.yml[m
+\ No newline at end of file[m
+[1mdiff --git a/_config.landscape.yml b/_config.landscape.yml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e69de29[m
+[1mdiff --git a/_config.yml b/_config.yml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c0c4267[m
+[1m--- /dev/null[m
+[1m+++ b/_config.yml[m
+[36m@@ -0,0 +1,107 @@[m
+[32m+[m[32m# Hexo Configuration[m
+[32m+[m[32m## Docs: https://hexo.io/docs/configuration.html[m
+[32m+[m[32m## Source: https://github.com/hexojs/hexo/[m
+[32m+[m
+[32m+[m[32m# Site[m
+[32m+[m[32mtitle: Hexo[m
+[32m+[m[32msubtitle: ''[m
+[32m+[m[32mdescription: ''[m
+[32m+[m[32mkeywords:[m
+[32m+[m[32mauthor: John Doe[m
+[32m+[m[32mlanguage: en[m
+[32m+[m[32mtimezone: ''[m
+[32m+[m
+[32m+[m[32m# URL[m
+[32m+[m[32m## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'[m
+[32m+[m[32murl: http://example.com[m
+[32m+[m[32mpermalink: :year/:month/:day/:title/[m
+[32m+[m[32mpermalink_defaults:[m
+[32m+[m[32mpretty_urls:[m
+[32m+[m[32m  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks[m
+[32m+[m[32m  trailing_html: true # Set to false to remove trailing '.html' from permalinks[m
+[32m+[m
+[32m+[m[32m# Directory[m
+[32m+[m[32msource_dir: source[m
+[32m+[m[32mpublic_dir: public[m
+[32m+[m[32mtag_dir: tags[m
+[32m+[m[32marchive_dir: archives[m
+[32m+[m[32mcategory_dir: categories[m
+[32m+[m[32mcode_dir: downloads/code[m
+[32m+[m[32mi18n_dir: :lang[m
+[32m+[m[32mskip_render:[m
+[32m+[m
+[32m+[m[32m# Writing[m
+[32m+[m[32mnew_post_name: :title.md # File name of new posts[m
+[32m+[m[32mdefault_layout: post[m
+[32m+[m[32mtitlecase: false # Transform title into titlecase[m
+[32m+[m[32mexternal_link:[m
+[32m+[m[32m  enable: true # Open external links in new tab[m
+[32m+[m[32m  field: site # Apply to the whole site[m
+[32m+[m[32m  exclude: ''[m
+[32m+[m[32mfilename_case: 0[m
+[32m+[m[32mrender_drafts: false[m
+[32m+[m[32mpost_asset_folder: false[m
+[32m+[m[32mrelative_link: false[m
+[32m+[m[32mfuture: true[m
+[32m+[m[32mhighlight:[m
+[32m+[m[32m  enable: true[m
+[32m+[m[32m  line_number: true[m
+[32m+[m[32m  auto_detect: false[m
+[32m+[m[32m  tab_replace: ''[m
+[32m+[m[32m  wrap: true[m
+[32m+[m[32m  hljs: false[m
+[32m+[m[32mprismjs:[m
+[32m+[m[32m  enable: false[m
+[32m+[m[32m  preprocess: true[m
+[32m+[m[32m  line_number: true[m
+[32m+[m[32m  tab_replace: ''[m
+[32m+[m
+[32m+[m[32m# Home page setting[m
+[32m+[m[32m# path: Root path for your blogs index page. (default = '')[m
+[32m+[m[32m# per_page: Posts displayed per page. (0 = disable pagination)[m
+[32m+[m[32m# order_by: Posts order. (Order by date descending by default)[m
+[32m+[m[32mindex_generator:[m
+[32m+[m[32m  path: ''[m
+[32m+[m[32m  per_page: 10[m
+[32m+[m[32m  order_by: -date[m
+[32m+[m
+[32m+[m[32m# Category & Tag[m
+[32m+[m[32mdefault_category: uncategorized[m
+[32m+[m[32mcategory_map:[m
+[32m+[m[32mtag_map:[m
+[32m+[m
+[32m+[m[32m# Metadata elements[m
+[32m+[m[32m## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta[m
+[32m+[m[32mmeta_generator: true[m
+[32m+[m
+[32m+[m[32m# Date / Time format[m
+[32m+[m[32m## Hexo uses Moment.js to parse and display date[m
+[32m+[m[32m## You can customize the date format as defined in[m
+[32m+[m[32m## http://momentjs.com/docs/#/displaying/format/[m
+[32m+[m[32mdate_format: YYYY-MM-DD[m
+[32m+[m[32mtime_format: HH:mm:ss[m
+[32m+[m[32m## updated_option supports 'mtime', 'date', 'empty'[m
+[32m+[m[32mupdated_option: 'mtime'[m
+[32m+[m
+[32m+[m[32m# Pagination[m
+[32m+[m[32m## Set per_page to 0 to disable pagination[m
+[32m+[m[32mper_page: 10[m
+[32m+[m[32mpagination_dir: page[m
+[32m+[m
+[32m+[m[32m# Include / Exclude file(s)[m
+[32m+[m[32m## include:/exclude: options only apply to the 'source/' folder[m
+[32m+[m[32minclude:[m
+[32m+[m[32mexclude:[m
+[32m+[m[32mignore:[m
+[32m+[m
+[32m+[m[32m# Extensions[m
+[32m+[m[32m## Plugins: https://hexo.io/plugins/[m
+[32m+[m[32m## Themes: https://hexo.io/themes/[m
+[32m+[m[32mtheme: landscape[m
+[32m+[m
+[32m+[m[32m# Deployment[m
+[32m+[m[32m## Docs: https://hexo.io/docs/one-command-deployment[m
+[32m+[m[32mdeploy:[m
+[32m+[m[32m  type: git[m
+[32m+[m[32m  repo: https://github.com/zhiqiang00/zhiqiang00.github.io.git[m
+[32m+[m[32m  branch: main[m
+\ No newline at end of file[m
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..683df12[m
+[1m--- /dev/null[m
+[1m+++ b/package-lock.json[m
+[36m@@ -0,0 +1,4418 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "name": "hexo-site",[m
+[32m+[m[32m  "version": "0.0.0",[m
+[32m+[m[32m  "lockfileVersion": 2,[m
+[32m+[m[32m  "requires": true,[m
+[32m+[m[32m  "packages": {[m
+[32m+[m[32m    "": {[m
+[32m+[m[32m      "name": "hexo-site",[m
+[32m+[m[32m      "version": "0.0.0",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "hexo": "^6.0.0",[m
+[32m+[m[32m        "hexo-deployer-git": "^3.0.0",[m
+[32m+[m[32m        "hexo-generator-archive": "^1.0.0",[m
+[32m+[m[32m        "hexo-generator-category": "^1.0.0",[m
+[32m+[m[32m        "hexo-generator-index": "^2.0.0",[m
+[32m+[m[32m        "hexo-generator-tag": "^1.0.0",[m
+[32m+[m[32m        "hexo-renderer-ejs": "^2.0.0",[m
+[32m+[m[32m        "hexo-renderer-marked": "^5.0.0",[m
+[32m+[m[32m        "hexo-renderer-stylus": "^2.0.0",[m
+[32m+[m[32m        "hexo-server": "^3.0.0",[m
+[32m+[m[32m        "hexo-theme-landscape": "^0.0.3"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/@tootallnate/once": {[m
+[32m+[m[32m      "version": "2.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@tootallnate/once/-/once-2.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==",[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">= 10"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/a-sync-waterfall": {[m
+[32m+[m[32m      "version": "1.0.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/a-sync-waterfall/-/a-sync-waterfall-1.0.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-RYTOHHdWipFUliRFMCS4X2Yn2X8M87V/OpSqWzKKOGhzqyUxzyVmhHDH9sAvG+ZuQf/TAOFsLCpMw09I1ufUnA=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/abab": {[m
+[32m+[m[32m      "version": "2.0.5",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/abab/-/abab-2.0.5.tgz",[m
+[32m+[m[32m      "integrity": "sha512-9IK9EadsbHo6jLWIpxpR6pL0sazTXV6+SQv25ZB+F7Bj9mJNaOc4nCRabwd5M/JwmUa8idz6Eci6eKfJryPs6Q=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/abbrev": {[m
+[32m+[m[32m      "version": "1.1.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/abbrev/-/abbrev-1.1.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/accepts": {[m
+[32m+[m[32m      "version": "1.3.8",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/accepts/-/accepts-1.3.8.tgz",[m
+[32m+[m[32m      "integrity": "sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "mime-types": "~2.1.34",[m
+[32m+[m[32m        "negotiator": "0.6.3"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">= 0.6"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/acorn": {[m
+[32m+[m[32m      "version": "8.7.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/acorn/-/acorn-8.7.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==",[m
+[32m+[m[32m      "bin": {[m
+[32m+[m[32m        "acorn": "bin/acorn"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=0.4.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/acorn-globals": {[m
+[32m+[m[32m      "version": "6.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/acorn-globals/-/acorn-globals-6.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-ZQl7LOWaF5ePqqcX4hLuv/bLXYQNfNWw2c0/yX/TsPRKamzHcTGQnlCjHT3TsmkOUVEPS3crCxiPfdzE/Trlhg==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "acorn": "^7.1.1",[m
+[32m+[m[32m        "acorn-walk": "^7.1.1"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/acorn-globals/node_modules/acorn": {[m
+[32m+[m[32m      "version": "7.4.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/acorn/-/acorn-7.4.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==",[m
+[32m+[m[32m      "bin": {[m
+[32m+[m[32m        "acorn": "bin/acorn"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=0.4.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/acorn-walk": {[m
+[32m+[m[32m      "version": "7.2.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/acorn-walk/-/acorn-walk-7.2.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-OPdCF6GsMIP+Az+aWfAAOEt2/+iVDKE7oy6lJ098aoe59oAmK76qV6Gw60SbZ8jHuG2wH058GF4pLFbYamYrVA==",[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=0.4.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/agent-base": {[m
+[32m+[m[32m      "version": "6.0.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/agent-base/-/agent-base-6.0.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "debug": "4"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">= 6.0.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/agent-base/node_modules/debug": {[m
+[32m+[m[32m      "version": "4.3.4",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz",[m
+[32m+[m[32m      "integrity": "sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "ms": "2.1.2"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=6.0"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "peerDependenciesMeta": {[m
+[32m+[m[32m        "supports-color": {[m
+[32m+[m[32m          "optional": true[m
+[32m+[m[32m        }[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/agent-base/node_modules/ms": {[m
+[32m+[m[32m      "version": "2.1.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/amdefine": {[m
+[32m+[m[32m      "version": "1.0.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-1.0.1.tgz",[m
+[32m+[m[32m      "integrity": "sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=",[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=0.4.2"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/ansi-regex": {[m
+[32m+[m[32m      "version": "5.0.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==",[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=8"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/ansi-styles": {[m
+[32m+[m[32m      "version": "4.3.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "color-convert": "^2.0.1"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=8"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "funding": {[m
+[32m+[m[32m        "url": "https://github.com/chalk/ansi-styles?sponsor=1"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/anymatch": {[m
+[32m+[m[32m      "version": "3.1.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/anymatch/-/anymatch-3.1.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-P43ePfOAIupkguHUycrc4qJ9kz8ZiuOUijaETwX7THt0Y/GNK7v0aa8rY816xWjZ7rJdA5XdMcpVFTKMq+RvWg==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "normalize-path": "^3.0.0",[m
+[32m+[m[32m        "picomatch": "^2.0.4"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">= 8"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/archy": {[m
+[32m+[m[32m      "version": "1.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/archy/-/archy-1.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha1-+cjBN1fMHde8N5rHeyxipcKGjEA="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/argparse": {[m
+[32m+[m[32m      "version": "2.0.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/asap": {[m
+[32m+[m[32m      "version": "2.0.6",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/asap/-/asap-2.0.6.tgz",[m
+[32m+[m[32m      "integrity": "sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/async": {[m
+[32m+[m[32m      "version": "0.9.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/async/-/async-0.9.2.tgz",[m
+[32m+[m[32m      "integrity": "sha1-rqdNXmHB+JlhO/ZL2mbUx48v0X0="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/asynckit": {[m
+[32m+[m[32m      "version": "0.4.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",[m
+[32m+[m[32m      "integrity": "sha1-x57Zf380y48robyXkLzDZkdLS3k="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/atob": {[m
+[32m+[m[32m      "version": "2.1.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==",[m
+[32m+[m[32m      "bin": {[m
+[32m+[m[32m        "atob": "bin/atob.js"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">= 4.5.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/balanced-match": {[m
+[32m+[m[32m      "version": "1.0.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/basic-auth": {[m
+[32m+[m[32m      "version": "2.0.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/basic-auth/-/basic-auth-2.0.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "safe-buffer": "5.1.2"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">= 0.8"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/binary-extensions": {[m
+[32m+[m[32m      "version": "2.2.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.2.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==",[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=8"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/bluebird": {[m
+[32m+[m[32m      "version": "3.7.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/brace-expansion": {[m
+[32m+[m[32m      "version": "1.1.11",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz",[m
+[32m+[m[32m      "integrity": "sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "balanced-match": "^1.0.0",[m
+[32m+[m[32m        "concat-map": "0.0.1"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/braces": {[m
+[32m+[m[32m      "version": "3.0.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/braces/-/braces-3.0.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "fill-range": "^7.0.1"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=8"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/browser-process-hrtime": {[m
+[32m+[m[32m      "version": "1.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/browser-process-hrtime/-/browser-process-hrtime-1.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow=="[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/bytes": {[m
+[32m+[m[32m      "version": "3.0.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/bytes/-/bytes-3.0.0.tgz",[m
+[32m+[m[32m      "integrity": "sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=",[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">= 0.8"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    
