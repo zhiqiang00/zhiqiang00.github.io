@@ -1,123 +1,183 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Deep Graph Infomax 论文方向：图像领域 论文来源：2019 ICLR 论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1809.10341 论文代码：https:&#x2F;&#x2F;github.com&#x2F;PetarV-&#x2F;DGI 阅读时间：2022年3月7日  摘要 DGI 是一种基于图数据结构的表示节点嵌入的无监督方法。  最大化局部和全局的互信息（通过图卷积得到的）。  DGI 不依赖于">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>哈士奇的博客 | 哈士奇的博客</title><meta name="author" content="王志强"><meta name="copyright" content="王志强"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Deep Graph Infomax  论文方向：图像领域 论文来源：2019 ICLR 论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1809.10341 论文代码：https:&#x2F;&#x2F;github.com&#x2F;PetarV-&#x2F;DGI 阅读时间：2022年3月7日  摘要   DGI 是一种基于图数据结构的表示节点嵌入的无监督方法。   最大化局部和全局的互信息（通过图卷积得到的）。   DGI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="哈士奇的博客">
 <meta property="og:url" content="http://example.com/2022/03/18/DGI/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Deep Graph Infomax 论文方向：图像领域 论文来源：2019 ICLR 论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1809.10341 论文代码：https:&#x2F;&#x2F;github.com&#x2F;PetarV-&#x2F;DGI 阅读时间：2022年3月7日  摘要 DGI 是一种基于图数据结构的表示节点嵌入的无监督方法。  最大化局部和全局的互信息（通过图卷积得到的）。  DGI 不依赖于">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:/Users/WangTao/AppData/Roaming/Typora/typora-user-images/image-20220314230556068.png">
-<meta property="og:image" content="c:/Users/WangTao/AppData/Roaming/Typora/typora-user-images/image-20220315214300091.png">
-<meta property="og:image" content="c:/Users/WangTao/AppData/Roaming/Typora/typora-user-images/image-20220317102616142.png">
-<meta property="og:image" content="c:/Users/WangTao/AppData/Roaming/Typora/typora-user-images/image-20220317130050446.png">
-<meta property="og:image" content="c:/Users/WangTao/AppData/Roaming/Typora/typora-user-images/image-20220317153436271.png">
-<meta property="og:image" content="c:/Users/WangTao/AppData/Roaming/Typora/typora-user-images/image-20220317155707972.png">
+<meta property="og:site_name" content="哈士奇的博客">
+<meta property="og:description" content="Deep Graph Infomax  论文方向：图像领域 论文来源：2019 ICLR 论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1809.10341 论文代码：https:&#x2F;&#x2F;github.com&#x2F;PetarV-&#x2F;DGI 阅读时间：2022年3月7日  摘要   DGI 是一种基于图数据结构的表示节点嵌入的无监督方法。   最大化局部和全局的互信息（通过图卷积得到的）。   DGI">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2022-03-17T18:45:03.105Z">
 <meta property="article:modified_time" content="2022-03-17T17:23:49.144Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="王志强">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/WangTao/AppData/Roaming/Typora/typora-user-images/image-20220314230556068.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/03/18/DGI/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '哈士奇的博客',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-18 01:23:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
-<meta name="generator" content="Hexo 6.1.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="post-DGI" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/18/DGI/" class="article-date">
-  <time class="dt-published" datetime="2022-03-17T18:45:03.105Z" itemprop="datePublished">2022-03-18</time>
-</a>
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-  </div>
-  <div class="article-inner">
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Deep-Graph-Infomax"><a href="#Deep-Graph-Infomax" class="headerlink" title="Deep Graph Infomax"></a>Deep Graph Infomax</h1><blockquote>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">哈士奇的博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-17T18:45:03.105Z" title="发表于 2022-03-18 02:45:03">2022-03-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-17T17:23:49.144Z" title="更新于 2022-03-18 01:23:49">2022-03-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Deep Graph Infomax</h1>
+<blockquote>
 <p>论文方向：图像领域</p>
 <p>论文来源：2019 ICLR</p>
 <p>论文链接：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1809.10341">https://arxiv.org/abs/1809.10341</a></p>
 <p>论文代码：<a target="_blank" rel="noopener" href="https://github.com/PetarV-/DGI">https://github.com/PetarV-/DGI</a></p>
 <p>阅读时间：2022年3月7日</p>
 </blockquote>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
-<li><p>DGI 是一种基于图数据结构的表示节点嵌入的无监督方法。</p>
+<h2 id="摘要">摘要</h2>
+<ul>
+<li>
+<p>DGI 是一种基于图数据结构的表示节点嵌入的无监督方法。</p>
 </li>
-<li><p>最大化局部和全局的互信息（通过图卷积得到的）。</p>
+<li>
+<p>最大化局部和全局的互信息（通过图卷积得到的）。</p>
 </li>
-<li><p>DGI 不依赖于随机游走目标，并且很容易适用于直推式学习和归纳式学习。</p>
+<li>
+<p>DGI 不依赖于随机游走目标，并且很容易适用于直推式学习和归纳式学习。</p>
 </li>
 </ul>
-<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h2><p>　　基于研究的背景以及问题描述，作者的研究目标是什么？</p>
+<h2 id="1-介绍">1 介绍</h2>
+<p>基于研究的背景以及问题描述，作者的研究目标是什么？</p>
 <ul>
-<li><p>将神经网络的方法推广到图结构，是目前机器学习的主要难题，GCN很好的解决了这个问题。但是最成功的的方法往往需要有监督的学习，由于<strong>大多数数据都是没有标签的，这使有监督学习面临难题</strong>。</p>
+<li>
+<p>将神经网络的方法推广到图结构，是目前机器学习的主要难题，GCN很好的解决了这个问题。但是最成功的的方法往往需要有监督的学习，由于<strong>大多数数据都是没有标签的，这使有监督学习面临难题</strong>。</p>
 </li>
-<li><p>此外，<strong>通常希望从</strong> <em><strong>大规模图</strong></em> <strong>中发现新颖或有趣的结构，因此，无监督图学习对于许多重要任务至关重要.</strong></p>
+<li>
+<p>此外，<strong>通常希望从</strong> <em><strong>大规模图</strong></em> <strong>中发现新颖或有趣的结构，因此，无监督图学习对于许多重要任务至关重要.</strong></p>
 </li>
-<li><p>随机游走的方法高度依赖参数的选择</p>
+<li>
+<p>随机游走的方法高度依赖参数的选择</p>
 </li>
-<li><p>目前尚不清楚随机游走目标是否真的提供了任何有用的信号，因为这些编码器已经强制实施了一个归纳偏差，即相邻节点具有相似的表示。</p>
+<li>
+<p>目前尚不清楚随机游走目标是否真的提供了任何有用的信号，因为这些编码器已经强制实施了一个归纳偏差，即相邻节点具有相似的表示。</p>
 </li>
-<li><p><strong>工作：在这项工作中，我们提出了一个基于互信息而不是随机游走的无监督图学习的替代目标。</strong></p>
+<li>
+<p><strong>工作：在这项工作中，我们提出了一个基于互信息而不是随机游走的无监督图学习的替代目标。</strong></p>
 </li>
 </ul>
 <p>​       <strong>解决上面两个动机：1) 无标签问题；2) 在大规模图上可以拓展的问题</strong></p>
@@ -125,214 +185,157 @@
 <li>在概率论和信息论中，两个随机变量的互信息(Mutual Information, MI)是指变量之间相互依赖性的量度。近年来基于互信息的代表性工作是 <strong>MINE</strong>。</li>
 <li><strong>MINE</strong> 其中提出了一种Deep InfoMax (<strong>DMI</strong>)方法学习高维数据的表示。DMI训练了一个编码模型来最大化高阶全局表示和输入的局部部分互信息。这鼓励编码器携带存在于所有位置的信息类型（因此是全局相关的），例如类标签的情况。(它依赖于训练统计网络作为来自两个随机变量及其联合分布的样本的分类器边际产品)</li>
 </ul>
-<h2 id="2-相关工作"><a href="#2-相关工作" class="headerlink" title="2 相关工作"></a>2 相关工作</h2><h3 id="2-1-对学习方法"><a href="#2-1-对学习方法" class="headerlink" title="2.1 对学习方法"></a>2.1 对学习方法</h3><p>　　表示的无监督学习的一个重要方法是训练编码器在捕获感兴趣的统计相关性的表示和不捕获感兴趣的统计相关性的表示之间进行对比。例如，对比方法可以使用评分函数，训练编码器以增加“真实”输入（也就是正例）的分数并降低“假”输入的分数。</p>
-<p>​        DGI在这方面也具有对比性，因为我们的目标是基于对局部-全局对和负采样对进行分类。</p>
-<h3 id="2-2-采样策略"><a href="#2-2-采样策略" class="headerlink" title="2.2 采样策略"></a>2.2 采样策略</h3><p>　　对比方法的一个关键实现细节是如何绘制正负样本。之前在无监督图表示学习上的工作依赖于局部对比损失(强制近端节点有相似的嵌入)。</p>
-<h3 id="2-3-预测编码"><a href="#2-3-预测编码" class="headerlink" title="2.3 预测编码"></a>2.3 预测编码</h3><p>　　对比预测编码(CPC)是另一种基于互信息最大化的深度表示学习方法。PCP也是对比的，但是使用条件密度的估计(以噪声对比估计的形式)作为评分函数。</p>
-<p>　　然而，与DGI不同的是，CPC和上面的图方法都是预测性的:对比目标有效地训练了输入结构指定部分之间的预测器(例如，在相邻节点对之间或节点与其邻域之间)。<strong>DGI的不同之处在于，同时比较一个图的全局&#x2F;局部部分，其中全局变量是从所有的局部变量计算而来的。</strong></p>
-<p>　　之前唯一侧重于对比图上的“全局”和“局部”表示的作品是通过邻接矩阵上的(自动)编码目标来实现的(Wang et al.， 2016)，并将社区层面的约束纳入节点嵌入中(Wang et al.， 2017)。这两种方法都依赖于矩阵分解式的损耗，因此不能扩展到更大的图。 <strong>矩阵分解损失比较大</strong>。</p>
-<h2 id="3-DGI-方法"><a href="#3-DGI-方法" class="headerlink" title="3  DGI 方法"></a>3  DGI 方法</h2><blockquote>
-<p>作者解决问题的方法&#x2F;算法是什么？是否基于前人的方法？基于了哪些？</p>
+<h2 id="2-相关工作">2 相关工作</h2>
+<h3 id="2-1-对学习方法">2.1 对学习方法</h3>
+<p>表示的无监督学习的一个重要方法是训练编码器在捕获感兴趣的统计相关性的表示和不捕获感兴趣的统计相关性的表示之间进行对比。例如，对比方法可以使用评分函数，训练编码器以增加“真实”输入（也就是正例）的分数并降低“假”输入的分数。</p>
+<p>​		DGI在这方面也具有对比性，因为我们的目标是基于对局部-全局对和负采样对进行分类。</p>
+<h3 id="2-2-采样策略">2.2 采样策略</h3>
+<p>对比方法的一个关键实现细节是如何绘制正负样本。之前在无监督图表示学习上的工作依赖于局部对比损失(强制近端节点有相似的嵌入)。</p>
+<h3 id="2-3-预测编码">2.3 预测编码</h3>
+<p>对比预测编码(CPC)是另一种基于互信息最大化的深度表示学习方法。PCP也是对比的，但是使用条件密度的估计(以噪声对比估计的形式)作为评分函数。</p>
+<p>然而，与DGI不同的是，CPC和上面的图方法都是预测性的:对比目标有效地训练了输入结构指定部分之间的预测器(例如，在相邻节点对之间或节点与其邻域之间)。<strong>DGI的不同之处在于，同时比较一个图的全局/局部部分，其中全局变量是从所有的局部变量计算而来的。</strong></p>
+<p>之前唯一侧重于对比图上的“全局”和“局部”表示的作品是通过邻接矩阵上的(自动)编码目标来实现的(Wang et al.， 2016)，并将社区层面的约束纳入节点嵌入中(Wang et al.， 2017)。这两种方法都依赖于矩阵分解式的损耗，因此不能扩展到更大的图。 <strong>矩阵分解损失比较大</strong>。</p>
+<h2 id="3-DGI-方法">3  DGI 方法</h2>
+<blockquote>
+<p>作者解决问题的方法/算法是什么？是否基于前人的方法？基于了哪些？</p>
 </blockquote>
-<h3 id="3-1-基于图的无监督学习"><a href="#3-1-基于图的无监督学习" class="headerlink" title="3.1 基于图的无监督学习"></a>3.1 基于图的无监督学习</h3><p>　　假设了一个通用的基于图的无监督机器学习设置。</p>
-<p>　　首先给出图的节点特征， $\mathbf X &#x3D; {\vec{x_1},\vec{x_2},…,\vec{x_N},}, \vec{x_i}\in\mathbb{R}^F$，是节点$i$的属性，$F$是维度，$N$是节点个数。 邻接矩阵A是这些节点的关心信息。假设边没权重，邻接矩阵存储的时 $0$ 或者 $1$。</p>
-<p>　　模型的目的是训练一个encoder，将 $\varepsilon:R^{N \times F}  *  R^{N \times N }\rightarrow R^{N \times F’}$，形式化表示为: $\mathbf H &#x3D; \varepsilon({\mathbf X},{\mathbf A}) &#x3D; {\vec{h_1},\vec{h_2},…,\vec{h_N}} $最终实现用$F’$维度表示每个节点。然后可以检索这些表示，并将其用于下游任务，如节点分类。$\vec{h}_i$表示一个节点的high-level的表示。</p>
-<p>　　在这里，重点关注图卷积编码器——一种灵活的节点嵌入体系结构，它通过局部节点邻域的重复聚集生成节点表示。一个关键的结果是产生的节点嵌入$\vec{h}_i$，总结了以节点$i$为中心的图的一个局部信息(一个patch)，而不仅仅是节点本身。在接下来的内容中，我们经常将 $\vec{h}_i$ 作为局部特征(patch representations)表示来强调这点。<strong>也就是说用$\vec{h}_i$表示局部特征。</strong></p>
-<h3 id="3-2-局部-全局互信息最大化"><a href="#3-2-局部-全局互信息最大化" class="headerlink" title="3.2 局部-全局互信息最大化"></a>3.2 局部-全局互信息最大化</h3><p>　　我们学习编码器的方法依赖于最大化局部互信息——即，DGI寻求获取节点(即局部)表示，该表示捕获整个图的全局信息内容，由一个汇总向量 $\widetilde{s}$ 表示。</p>
-<p>　　为了获得图级别的 summary vector $\widetilde{s}$，作者提出了 <strong>readout函数</strong> $R: R^{N×F}→R^F$，将得到的patch表示汇总为图级表示$\widetilde s &#x3D; R(\varepsilon(\mathbf X,\mathbf A)) $。 <strong>就是将一堆节点的向量映射为一个向量</strong>。</p>
-<p>　　作为最大化局部互信息的指标，使用了一个判别器 discriminator: $\mathcal D:\mathbb{R}^F \times \mathbb{R}^F \to \mathbb{R} $， 例如 $\mathcal{D}(\vec h_i, \vec s )$ 代表着patch-summary对，也就是去判断patch和summary的两个向量的概率分数，如果patch在summary里面的话，这个值应该更高。</p>
-<p>　　给判别器$\mathcal D$提供的负样本是 $(\mathbf X, \mathbf A)$的全局表示(summary $\vec s$ ) 和另一图 $(\widetilde{\mathbf X}, \widetilde{\mathbf A})$ 的局部特征表示(patch representations)。针对多图设置，$(\widetilde{\mathbf X}, \widetilde{\mathbf A})$，可以是其他元素。但是针对单图，需要一个显示的(随机的)curruption函数 $\mathcal C:\mathbb{R}^{N \times F} \times \mathbb{R}^{N \times N} \to \mathcal C:\mathbb{R}^{M \times F} \times \mathbb{R}^{M \times M}$ 。</p>
-<p>　　负抽样程序的选择将控制特定类型的结构信息，这些信息是作为这种最大化的副产品所希望捕获的。</p>
-<p>　　对于目标，我们遵循Deep InfoMax (DIM, Hjelm等人，2018)的直觉，并使用带有标准二值交叉熵(BCE)损失的<strong>噪声对比型</strong>目标，&#x3D;&#x3D;这些样本来自联合(正示例)和    边际(负示例)的乘积。&#x3D;&#x3D;目标函数：</p>
-<p><img src="C:\Users\WangTao\AppData\Roaming\Typora\typora-user-images\image-20220314230556068.png" alt="image-20220314230556068"></p>
-<p>　　该方法基于联合和边缘的乘积之间的JensenShannon散度，有效地最大化了 $\vec h_i$ 和$\vec s_i$之间的互信息。</p>
-<p>　　生成的局部特征patch representation 被驱动以保持与全局图摘要的互信息，这允许在局部水平上发现和保存相似性，例如具有相似结构的角色的遥远节点。注意，这是一个“颠倒”版本的参数由Hjelm et al提出，针对节点分类，我们的目标是为局部特征（也就是节点的向量表示）与图中类似的局部特征建立联系，而不是让全局信息summary包含所有这些相似之处(然而,这两种效应在原则上应该同时发生)。</p>
-<h3 id="3-3-THEORETICAL-MOTIVATION"><a href="#3-3-THEORETICAL-MOTIVATION" class="headerlink" title="3.3 THEORETICAL MOTIVATION"></a>3.3 THEORETICAL MOTIVATION</h3><p>　　现在，我们提供了一些直觉，将我们的鉴别器的分类错误与图表示上的互信息最大化联系起来。……</p>
-<h3 id="3-4-DGI-概述"><a href="#3-4-DGI-概述" class="headerlink" title="3.4 DGI 概述"></a>3.4 DGI 概述</h3><p>　　假设单图设置(即提供$(X, A)$作为输入)，我们现在总结<code>Deep Graph Infomax</code>过程的步骤:</p>
+<h3 id="3-1-基于图的无监督学习">3.1 基于图的无监督学习</h3>
+<p>假设了一个通用的基于图的无监督机器学习设置。</p>
+<p>首先给出图的节点特征， $\mathbf X = {\vec{x_1},\vec{x_2},…,\vec{x_N},}, \vec{x_i}\in\mathbb{R}^F$，是节点$i$的属性，$F$是维度，$N$是节点个数。 邻接矩阵A是这些节点的关心信息。假设边没权重，邻接矩阵存储的时 $0$ 或者 $1$。</p>
+<p>模型的目的是训练一个encoder，将 $\varepsilon:R^{N \times F}  *  R^{N \times N }\rightarrow R^{N \times F’}$，形式化表示为: $\mathbf H = \varepsilon({\mathbf X},{\mathbf A}) = {\vec{h_1},\vec{h_2},…,\vec{h_N}} $最终实现用$F’$维度表示每个节点。然后可以检索这些表示，并将其用于下游任务，如节点分类。$\vec{h}_i$表示一个节点的high-level的表示。</p>
+<p>在这里，重点关注图卷积编码器——一种灵活的节点嵌入体系结构，它通过局部节点邻域的重复聚集生成节点表示。一个关键的结果是产生的节点嵌入$\vec{h}_i$，总结了以节点$i$为中心的图的一个局部信息(一个patch)，而不仅仅是节点本身。在接下来的内容中，我们经常将 $\vec{h}_i$ 作为局部特征(patch representations)表示来强调这点。<strong>也就是说用$\vec{h}_i$表示局部特征。</strong></p>
+<h3 id="3-2-局部-全局互信息最大化">3.2 局部-全局互信息最大化</h3>
+<p>我们学习编码器的方法依赖于最大化局部互信息——即，DGI寻求获取节点(即局部)表示，该表示捕获整个图的全局信息内容，由一个汇总向量 $\widetilde{s}$ 表示。</p>
+<p>为了获得图级别的 summary vector $\widetilde{s}$，作者提出了 <strong>readout函数</strong> $R: R^{N×F}→R^F$，将得到的patch表示汇总为图级表示$\widetilde s = R(\varepsilon(\mathbf X,\mathbf A)) $。 <strong>就是将一堆节点的向量映射为一个向量</strong>。</p>
+<p>作为最大化局部互信息的指标，使用了一个判别器 discriminator: $\mathcal D:\mathbb{R}^F \times \mathbb{R}^F \to \mathbb{R} $， 例如 $\mathcal{D}(\vec h_i, \vec s )$ 代表着patch-summary对，也就是去判断patch和summary的两个向量的概率分数，如果patch在summary里面的话，这个值应该更高。</p>
+<p>给判别器$\mathcal D$提供的负样本是 $(\mathbf X, \mathbf A)$的全局表示(summary $\vec s$ ) 和另一图 $(\widetilde{\mathbf X}, \widetilde{\mathbf A})$ 的局部特征表示(patch representations)。针对多图设置，$(\widetilde{\mathbf X}, \widetilde{\mathbf A})$，可以是其他元素。但是针对单图，需要一个显示的(随机的)curruption函数 $\mathcal C:\mathbb{R}^{N \times F} \times \mathbb{R}^{N \times N} \to \mathcal C:\mathbb{R}^{M \times F} \times \mathbb{R}^{M \times M}$ 。</p>
+<p>负抽样程序的选择将控制特定类型的结构信息，这些信息是作为这种最大化的副产品所希望捕获的。</p>
+<p>对于目标，我们遵循Deep InfoMax (DIM, Hjelm等人，2018)的直觉，并使用带有标准二值交叉熵(BCE)损失的<strong>噪声对比型</strong>目标，==这些样本来自联合(正示例)和    边际(负示例)的乘积。==目标函数：</p>
+<p><img src="C:%5CUsers%5CWangTao%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220314230556068.png" alt="image-20220314230556068"></p>
+<p>该方法基于联合和边缘的乘积之间的JensenShannon散度，有效地最大化了 $\vec h_i$ 和$\vec s_i$之间的互信息。</p>
+<p>生成的局部特征patch representation 被驱动以保持与全局图摘要的互信息，这允许在局部水平上发现和保存相似性，例如具有相似结构的角色的遥远节点。注意，这是一个“颠倒”版本的参数由Hjelm et al提出，针对节点分类，我们的目标是为局部特征（也就是节点的向量表示）与图中类似的局部特征建立联系，而不是让全局信息summary包含所有这些相似之处(然而,这两种效应在原则上应该同时发生)。</p>
+<h3 id="3-3-THEORETICAL-MOTIVATION">3.3 THEORETICAL MOTIVATION</h3>
+<p>现在，我们提供了一些直觉，将我们的鉴别器的分类错误与图表示上的互信息最大化联系起来。…</p>
+<h3 id="3-4-DGI-概述">3.4 DGI 概述</h3>
+<p>假设单图设置(即提供$(X, A)$作为输入)，我们现在总结<code>Deep Graph Infomax</code>过程的步骤:</p>
 <ul>
 <li>使用腐蚀函数<code>corruption function</code>j进行负采样:$(\widetilde{\mathbf X}, \widetilde{\mathbf A}) \sim \mathcal C(\mathbf X,\mathbf A)$</li>
-<li>获取局部特征<code>patch representations</code>，通过将图输入编码器，得到局部特征$\vec h _i$：$\mathbf H &#x3D; \varepsilon({\mathbf X},{\mathbf A}) &#x3D; {\vec{h_1},\vec{h_2},…,\vec{h_N}} $.</li>
-<li>将负采样的样本输入编码器，得到局部特征 $\vec{\widetilde h}_i$：$\widetilde {\mathbf H} &#x3D; \varepsilon(\widetilde{\mathbf X},\widetilde {\mathbf A})$。</li>
-<li>通过<code>readout function</code>函数获取全局表示：$\vec s &#x3D; \mathcal R(\mathbf H)$。</li>
+<li>获取局部特征<code>patch representations</code>，通过将图输入编码器，得到局部特征$\vec h _i$：$\mathbf H = \varepsilon({\mathbf X},{\mathbf A}) = {\vec{h_1},\vec{h_2},…,\vec{h_N}} $.</li>
+<li>将负采样的样本输入编码器，得到局部特征 $\vec{\widetilde h}_i$：$\widetilde {\mathbf H} = \varepsilon(\widetilde{\mathbf X},\widetilde {\mathbf A})$。</li>
+<li>通过<code>readout function</code>函数获取全局表示：$\vec s = \mathcal R(\mathbf H)$。</li>
 <li>通过梯度下降最大化公式1，从而更新 $\varepsilon, \mathcal R, \mathcal D $ 。</li>
 </ul>
-<p><img src="C:\Users\WangTao\AppData\Roaming\Typora\typora-user-images\image-20220315214300091.png" alt="image-20220315214300091"></p>
-<h2 id="4-实验"><a href="#4-实验" class="headerlink" title="4 实验"></a>4 实验</h2><p>在多种节点分类任务上评估了DGI编码器的好处。在每个任务上，DGI都完全使用无监督的方式去学习局部特征(patch representation)，然后去评估这些节点的分类效果。这个过程使用patch representation训练和测试一一个简单的线性(逻辑回归)分类器来完成。</p>
-<h3 id="4-1-数据集"><a href="#4-1-数据集" class="headerlink" title="4.1 数据集"></a>4.1 数据集</h3><p>这篇文章的实验设置和GCN和GraphSAGE一样，进行了以下基准任务：</p>
+<p><img src="C:%5CUsers%5CWangTao%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220315214300091.png" alt="image-20220315214300091"></p>
+<h2 id="4-实验">4 实验</h2>
+<p>在多种节点分类任务上评估了DGI编码器的好处。在每个任务上，DGI都完全使用无监督的方式去学习局部特征(patch representation)，然后去评估这些节点的分类效果。这个过程使用patch representation训练和测试一一个简单的线性(逻辑回归)分类器来完成。</p>
+<h3 id="4-1-数据集">4.1 数据集</h3>
+<p>这篇文章的实验设置和GCN和GraphSAGE一样，进行了以下基准任务：</p>
 <p>1）将Cora、Citeseer和Pubmed引文网络的论文按照主题进行分类;</p>
 <p>1）用Reddit Posts数据集预测社交网络模型的社区结构;</p>
 <p>1）在蛋白质-蛋白质相互作用(PPI)网络中对蛋白质的作用进行分类，需要将其推广到不可见的网络。</p>
-<p><img src="C:\Users\WangTao\AppData\Roaming\Typora\typora-user-images\image-20220317102616142.png" alt="image-20220317102616142"></p>
-<h3 id="4-2-实验设置"><a href="#4-2-实验设置" class="headerlink" title="4.2 实验设置"></a>4.2 实验设置</h3><p>可见上面的5个任务分为直推式、在大图上的归纳式以及在多图上的归纳式三个大类的任务，因此使用了适合该设置的不同的<strong>编码器</strong>和<strong>腐蚀函数</strong>(如下所述)：</p>
+<p><img src="C:%5CUsers%5CWangTao%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220317102616142.png" alt="image-20220317102616142"></p>
+<h3 id="4-2-实验设置">4.2 实验设置</h3>
+<p>可见上面的5个任务分为直推式、在大图上的归纳式以及在多图上的归纳式三个大类的任务，因此使用了适合该设置的不同的<strong>编码器</strong>和<strong>腐蚀函数</strong>(如下所述)：</p>
 <blockquote>
 <ul>
-<li><p>归纳学习(Inductive Learning): 先从训练样本中学习到一定的模式，然后利用其对测试样本进行预测，即首先从特殊打一半，再从一般到特殊，常见模型如贝叶斯模型。</p>
+<li>
+<p>归纳学习(Inductive Learning): 先从训练样本中学习到一定的模式，然后利用其对测试样本进行预测，即首先从特殊打一半，再从一般到特殊，常见模型如贝叶斯模型。</p>
 </li>
-<li><p>直推式学习(Transductive Learning)：先观察特定的训练样本，然后对特定测试样本做出预测(从特殊到特殊)。实际指当前学习的知识直接推广到给定的数据上，相当于给了一些测试集的情况下，结合已有的训练数据集，看能不能推广到测试数据上。</p>
-<p>&#x3D;&#x3D;总的来说，二者的区别在于我们想要预测的样本，在我们训练的时候是否遇见。</p>
+<li>
+<p>直推式学习(Transductive Learning)：先观察特定的训练样本，然后对特定测试样本做出预测(从特殊到特殊)。实际指当前学习的知识直接推广到给定的数据上，相当于给了一些测试集的情况下，结合已有的训练数据集，看能不能推广到测试数据上。</p>
+<p>==总的来说，二者的区别在于我们想要预测的样本，在我们训练的时候是否遇见。</p>
 </li>
 </ul>
 </blockquote>
 <ul>
-<li><p><strong>直推式</strong></p>
-<p>这里编码器是一层图卷积网络(GCN)模型，具有以下传播规则：<br>$$<br>\varepsilon(X, A) &#x3D; \sigma(\hat D^{-\frac{1}{2}} \hat{A} D^{-\frac{1}{2}} X \Theta)<br>$$<br>其中， $\hat A &#x3D; A + I_N$ 代表加上自环的邻接矩阵， $\hat D$ 代表相应的度矩阵，满足 $\hat D_{ii} &#x3D; \sum_j\hat A _{ij}$，对于非线性激活函数 $\sigma$ 选择PReLU(parametric ReLU)。$\Theta \in R^{F \times F’}$ 是应用于每个节点的科学系线性变换。</p>
-<p>因为我们的腐蚀函数被设计使用主要是想去鼓励正确编码表示图中不同节点的结构相似性，因此输入到腐蚀函数 $\mathcal C$ 的连接矩阵没有变 $\widetilde A &#x3D; A$ 。腐蚀函数通过改变原始特征特征进行腐蚀扰动获得 $\widetilde X$ 。腐蚀函数输入的图的节点和原始图是保持一致的，但是在图中的位置不同，因此可学习到不同的局部表征。</p>
+<li>
+<p><strong>直推式</strong></p>
+<p>这里编码器是一层图卷积网络(GCN)模型，具有以下传播规则：<br>
+$$<br>
+\varepsilon(X, A) = \sigma(\hat D^{-\frac{1}{2}} \hat{A} D^{-\frac{1}{2}} X \Theta)<br>
+$$<br>
+其中， $\hat A = A + I_N$ 代表加上自环的邻接矩阵， $\hat D$ 代表相应的度矩阵，满足 $\hat D_{ii} = \sum_j\hat A _{ij}$，对于非线性激活函数 $\sigma$ 选择PReLU(parametric ReLU)。$\Theta \in R^{F \times F’}$ 是应用于每个节点的科学系线性变换。</p>
+<p>因为我们的腐蚀函数被设计使用主要是想去鼓励正确编码表示图中不同节点的结构相似性，因此输入到腐蚀函数 $\mathcal C$ 的连接矩阵没有变 $\widetilde A = A$ 。腐蚀函数通过改变原始特征特征进行腐蚀扰动获得 $\widetilde X$ 。腐蚀函数输入的图的节点和原始图是保持一致的，但是在图中的位置不同，因此可学习到不同的局部表征。</p>
 </li>
-<li><p><strong>在大图上的归纳式</strong></p>
+<li>
+<p><strong>在大图上的归纳式</strong></p>
 <p>针对归纳式学习，这篇论文再采用GCN作为编码器了（因为学习过的滤波器依赖于一个固定的和已知的邻接矩阵），而是采用了平均池化传播规则，就像GraphSAGE-GCN那样。</p>
 </li>
 </ul>
-<p>$$<br>MP(X,A) &#x3D; \hat D ^{-1} \hat A X \Theta<br>$$</p>
-<p>​       参数定义如上。注意乘以 $\hat D^{−1}$ 实际上执行了一个标准化的和(因此是均值池).虽然方程中明确指定了邻接矩阵和度矩阵，&#x3D;&#x3D;但它们并不需要：相同的归纳行为可以通过节点的邻居的持续关注机制观察到，就像在Const - GAT模型中使用的那样。&#x3D;&#x3D;</p>
-<p>​        对于Reddit，编码器是一个带有跳跃连接的三层平均池化模型：<br>$$<br>\widetilde {MP}(X, A) &#x3D; \sigma (X \Theta’ \parallel MP(X,A))  \qquad \varepsilon(X,A)&#x3D;\widetilde{MP}_3(\widetilde{MP}_2(\widetilde{MP}_1(X,A), A), A)<br>$$<br>$\parallel$ 代表着连接，也就是说中心节点和它的邻居节点是分开处理的。</p>
-<p>考虑数据集的规模较大，很难完全将他放进GPU，因此，采用Hamilton等人(2017a)的子抽样方法，首先选择一个小批量节点，<strong>然后通过节点邻域的替换抽样，得到以每个节点为中心的子图。</strong>&#x3D;&#x3D;具体的，分别在第一、二和三层采样上采样10，10，25个邻居，那么这个采样的patch就是<code>1 + 10 + 100 + 2500 = 2611</code>个节点。也就是给定一个中心节点，然后第一圈采样10个(用这10个节点得到 $ h_1$ )，然后分别以第一圈得到的节点为中心再采样100个(用这10 * 10个节点得到 $ h_2$)，再以第二圈采样得到的节点为中心采样2500个(用这10 * 10 * 25个节点得到 $ h_3$)，这三个 $h_i$ 代表的时同一个节点&#x3D;&#x3D;。只进行必要的计算去得到中心节点 $i$ 的表示。在整个训练过程中使用了256个节点的小批量。</p>
-<p><img src="C:\Users\WangTao\AppData\Roaming\Typora\typora-user-images\image-20220317130050446.png" alt="image-20220317130050446"></p>
+<p>$$<br>
+MP(X,A) = \hat D ^{-1} \hat A X \Theta<br>
+$$</p>
+<p>​       参数定义如上。注意乘以 $\hat D^{−1}$ 实际上执行了一个标准化的和(因此是均值池).虽然方程中明确指定了邻接矩阵和度矩阵，==但它们并不需要：相同的归纳行为可以通过节点的邻居的持续关注机制观察到，就像在Const - GAT模型中使用的那样。==</p>
+<p>​        对于Reddit，编码器是一个带有跳跃连接的三层平均池化模型：<br>
+$$<br>
+\widetilde {MP}(X, A) = \sigma (X \Theta’ \parallel MP(X,A))  \qquad \varepsilon(X,A)=\widetilde{MP}_3(\widetilde{MP}_2(\widetilde{MP}_1(X,A), A), A)<br>
+$$<br>
+$\parallel$ 代表着连接，也就是说中心节点和它的邻居节点是分开处理的。</p>
+<p>考虑数据集的规模较大，很难完全将他放进GPU，因此，采用Hamilton等人(2017a)的子抽样方法，首先选择一个小批量节点，<strong>然后通过节点邻域的替换抽样，得到以每个节点为中心的子图。</strong>==具体的，分别在第一、二和三层采样上采样10，10，25个邻居，那么这个采样的patch就是<code>1 + 10 + 100 + 2500 = 2611</code>个节点。也就是给定一个中心节点，然后第一圈采样10个(用这10个节点得到 $ h_1$ )，然后分别以第一圈得到的节点为中心再采样100个(用这10 * 10个节点得到 $ h_2$)，再以第二圈采样得到的节点为中心采样2500个(用这10 * 10 * 25个节点得到 $ h_3$)，这三个 $h_i$ 代表的时同一个节点==。只进行必要的计算去得到中心节点 $i$ 的表示。在整个训练过程中使用了256个节点的小批量。</p>
+<p><img src="C:%5CUsers%5CWangTao%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220317130050446.png" alt="image-20220317130050446"></p>
 <p>该图中，$\vec s$ 是通过几个邻居采样的局部特征(patch represention)利用<strong>readout函数</strong>得到 $\vec s$ 。</p>
 <p>这里的腐蚀函数与上面的直推式类似，只不过将每次采样的patch作为一个单独的图进行破坏。这很可能导致中心节点的特征被替换为一个抽样邻居的特征（因为会把2611个以i为中心节点采样得到的节点(特征)放在一起，逐行打乱子采样patch中的特征矩阵），从而进一步鼓励负样本的多样性。最后将得到的patch representation 输入到判别器。</p>
 <ul>
-<li><p><strong>在多图上的归纳式</strong></p>
-<p>对于PPI数据集，受之前成功的监督架构的启发(GAT)，我们的编码器是一个具有密集跳跃连接的三层平均池模型。<br>$$<br>\begin{equation}<br>\begin{split}<br>H_1 &amp;&#x3D; \sigma (MP_1(X,A))\<br>H_2 &amp;&#x3D; \sigma (MP_2(H_1 + X W_{skip},A))\<br>\varepsilon(X,A) &amp;&#x3D; \sigma (MP_2(H_2 + H1 + X W_{skip},A))<br>\end{split}<br>\end{equation}<br>$$<br>其中 $W_{skip}$ 为可学投影矩阵，$MP$ 定义如上所示。利用 $\sigma$ 的PReLU激活，计算出每个 $MP$ 层的$F’ &#x3D; 512$个特征。</p>
+<li>
+<p><strong>在多图上的归纳式</strong></p>
+<p>对于PPI数据集，受之前成功的监督架构的启发(GAT)，我们的编码器是一个具有密集跳跃连接的三层平均池模型。<br>
+$$<br>
+\begin{equation}<br>
+\begin{split}<br>
+H_1 &amp;= \sigma (MP_1(X,A))\<br>
+H_2 &amp;= \sigma (MP_2(H_1 + X W_{skip},A))\<br>
+\varepsilon(X,A) &amp;= \sigma (MP_2(H_2 + H1 + X W_{skip},A))<br>
+\end{split}<br>
+\end{equation}<br>
+$$<br>
+其中 $W_{skip}$ 为可学投影矩阵，$MP$ 定义如上所示。利用 $\sigma$ 的PReLU激活，计算出每个 $MP$ 层的$F’ = 512$个特征。</p>
 <p>在这种多图设置中，选择使用随机抽样的训练图作为反面例子(也就是说，腐败函数只是从训练集中抽出一个不同的图)。考虑到在这个数据集中有超过40%的节点的特征为全零，发现这种方法是最稳定的。为了进一步扩大负面例子的池子，作者对采样图的输入特征应用了dropout。在将学习到的嵌入信息输入到逻辑回归模型之前，对整其进行标准化是有益的。</p>
 </li>
-<li><p><strong>读出器、鉴别器</strong></p>
+<li>
+<p><strong>读出器、鉴别器</strong></p>
 </li>
 </ul>
 <p>在所有三个实验设置中，我们采用了相同的readout fuction和鉴别器结构。</p>
-<p>对于readout function函数，作者使用所有节点特征的简单平均：<br>$$<br>\mathcal R(H) &#x3D; \sigma (\frac{1}{N} \sum_{i&#x3D;1}^N \vec h_i)<br>$$<br>鉴别器通过应用一个简单的双线性评分函数对summary-patch 表征对进行评分：<br>$$<br>\mathcal D(\vec h_i, \vec s_i) &#x3D; \sigma (\vec h_i^T \mathbf W\vec s)<br>$$<br>这里的 $\mathbf W$ 是一个可学习的分数矩阵， $\sigma$ 是一个logistic sigmoid nonlinearity，用来将 $(\vec h_i, \vec s_i)$ 是一个正例的分数转为概率。</p>
-<h3 id="4-3-结果"><a href="#4-3-结果" class="headerlink" title="4.3 结果"></a>4.3 结果</h3><ul>
+<p>对于readout function函数，作者使用所有节点特征的简单平均：<br>
+$$<br>
+\mathcal R(H) = \sigma (\frac{1}{N} \sum_{i=1}^N \vec h_i)<br>
+$$<br>
+鉴别器通过应用一个简单的双线性评分函数对summary-patch 表征对进行评分：<br>
+$$<br>
+\mathcal D(\vec h_i, \vec s_i) = \sigma (\vec h_i^T \mathbf W\vec s)<br>
+$$<br>
+这里的 $\mathbf W$ 是一个可学习的分数矩阵， $\sigma$ 是一个logistic sigmoid nonlinearity，用来将 $(\vec h_i, \vec s_i)$ 是一个正例的分数转为概率。</p>
+<h3 id="4-3-结果">4.3 结果</h3>
+<ul>
 <li>对于直推式任务，我们报告了我们的方法在训练50次后（随后是逻辑回归）在测试节点上的平均分类准确率（含标准偏差），其中DeepWalk、GCN、LP和Planetoid直接使用了GCN原文里面的实验结果，没重新跑。</li>
 <li>对于归纳式任务，我们报告了测试节点(未见过的)上的micro-averaged F1 scores，这是训练50次后的平均值，并重复使用GraphSAGE已经报告的其他模型的实验结果。具体来说，由于作者的设置是无监督的，所以只与无监督的GraphSAGE方法进行比较。另外作者还提供了两个相关架构的监督结果–FastGCN和Avg.  pooling。</li>
 <li>结果表明，在所有五个数据集上都取得了强大的性能。DGI方法与有监督损失的GCN模型所报告的结果具有竞争力，甚至超过了它在Cora和Citeseer数据集上的表现。我们认为这些优势源于这样一个事实，即<strong>DGI方法间接地允许每个节点获得整个图的结构属性，而有监督的GCN只限于两层邻域</strong>（由于训练信号的极端稀疏性和相应的过拟合威胁）。</li>
 <li>虽然DGI能够超越同等的监督编码器架构，但它的性能仍然没有超过目前的有监督直推式最先进的技术。</li>
 <li>DGI方法在Reddit和PPI数据集上成功超越了所有竞争的无监督GraphSAGE方法–<strong>从而验证了基于局部互信息最大化的方法在归纳式节点分类领域的潜力</strong>。</li>
 </ul>
-<p><img src="C:\Users\WangTao\AppData\Roaming\Typora\typora-user-images\image-20220317153436271.png" alt="image-20220317153436271"></p>
-<p>上图中，以分类精度(在归纳性任务上)或micro-averaged F1 scores(在归纳性任务上)计算的结果摘要。在第一栏中，强调了每种方法在训练期间可用的数据种类<strong>（X：特征，A：邻接矩阵，Y：标签）</strong>。”GCN “对应于以监督方式训练的两层DGI编码器。</p>
-<p><img src="C:\Users\WangTao\AppData\Roaming\Typora\typora-user-images\image-20220317155707972.png" alt="image-20220317155707972"></p>
+<p><img src="C:%5CUsers%5CWangTao%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220317153436271.png" alt="image-20220317153436271"></p>
+<p>上图中，以分类精度(在归纳性任务上)或micro-averaged F1 scores(在归纳性任务上)计算的结果摘要。在第一栏中，强调了每种方法在训练期间可用的数据种类**（X：特征，A：邻接矩阵，Y：标签）**。&quot;GCN &quot;对应于以监督方式训练的两层DGI编码器。</p>
+<p><img src="C:%5CUsers%5CWangTao%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220317155707972.png" alt="image-20220317155707972"></p>
 <p>Cora数据集中的节点的t-SNE嵌入来自原始特征（左）、随机初始化的DGI模型的特征（中）和学习的DGI模型（右）。学会的DGI模型的嵌入的聚类是明确的，Silhouette得分是0.234。</p>
-<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>我们提出了Deep Graph Infomax（DGI），这是一种在图结构数据上学习无监督表示的新方法。通过利用强大的图卷积架构获得的图的局部互信息最大化，能够获得考虑到图的全球结构特性的节点嵌入。这使得在各种transductive和inductive的分类任务中具有竞争性的性能，有时甚至超过了相关的监督性架构。</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
-<li><p>Learning deep representations by mutual information estimation and maximization</p>
+<h2 id="5-总结">5. 总结</h2>
+<p>我们提出了Deep Graph Infomax（DGI），这是一种在图结构数据上学习无监督表示的新方法。通过利用强大的图卷积架构获得的图的局部互信息最大化，能够获得考虑到图的全球结构特性的节点嵌入。这使得在各种transductive和inductive的分类任务中具有竞争性的性能，有时甚至超过了相关的监督性架构。</p>
+<h2 id="参考文献">参考文献</h2>
+<ol>
+<li>
+<p>Learning deep representations by mutual information estimation and maximization</p>
 </li>
-<li><p>Semi-supervised classification with graph convolutional networks</p>
+<li>
+<p>Semi-supervised classification with graph convolutional networks</p>
 </li>
-<li><p>Inductive representation learning on large graphs</p>
+<li>
+<p>Inductive representation learning on large graphs</p>
 </li>
 </ol>
-<h2 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a><strong>参考博客</strong></h2><blockquote>
+<h2 id="参考博客"><strong>参考博客</strong></h2>
+<blockquote>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/BlairGrowing/p/15261335.html">论文解读DGI</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/58682802">DEEP GRAPH INFOMAX 阅读笔记 ——知乎</a></li>
 </ol>
 </blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/18/DGI/" data-id="cl0vcfjzm0000lgtec7ti8q6d" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2022/03/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/03/18/DGI/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/18/hello-world/">(no title)</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">王志强</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/03/18/DGI/">http://example.com/2022/03/18/DGI/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">哈士奇的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/03/18/hello-world/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">王志强</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Deep Graph Infomax</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.2.</span> <span class="toc-text">1 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">2 相关工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AF%B9%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 对学习方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E9%87%87%E6%A0%B7%E7%AD%96%E7%95%A5"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 采样策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E9%A2%84%E6%B5%8B%E7%BC%96%E7%A0%81"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3 预测编码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-DGI-%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">3  DGI 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%9F%BA%E4%BA%8E%E5%9B%BE%E7%9A%84%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 基于图的无监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%B1%80%E9%83%A8-%E5%85%A8%E5%B1%80%E4%BA%92%E4%BF%A1%E6%81%AF%E6%9C%80%E5%A4%A7%E5%8C%96"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 局部-全局互信息最大化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-THEORETICAL-MOTIVATION"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 THEORETICAL MOTIVATION</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-DGI-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.4 DGI 概述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.5.</span> <span class="toc-text">4 实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 实验设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E7%BB%93%E6%9E%9C"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text">5. 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.7.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.8.</span> <span class="toc-text">参考博客</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/18/DGI/" title="无题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/03/18/DGI/" title="无题">无题</a><time datetime="2022-03-17T18:45:03.105Z" title="发表于 2022-03-18 02:45:03">2022-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/18/hello-world/" title="无题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/03/18/hello-world/" title="无题">无题</a><time datetime="2022-03-17T18:41:24.211Z" title="发表于 2022-03-18 02:41:24">2022-03-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 王志强</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
