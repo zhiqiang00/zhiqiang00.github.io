@@ -1,3 +1,5 @@
+katex: true
+
 # Deep Graph Infomax
 
 
