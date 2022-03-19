@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>哈士奇的博客 | 哈士奇的博客</title><meta name="author" content="王志强"><meta name="copyright" content="王志强"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="title: * date: * tags: * mathjax: true Deep Graph Infomax  论文方向：图像领域 论文来源：2019 ICLR 论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1809.10341 论文代码：https:&#x2F;&#x2F;github.com&#x2F;PetarV-&#x2F;DGI 阅读时间：2022年3月7日  摘要   DGI 是一种基于图数据结构的表示节点嵌入">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>哈士奇的博客 | 哈士奇的博客</title><meta name="author" content="王志强"><meta name="copyright" content="王志强"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="title: Deep Graph Infomax date: * tags: * mathjax: true Deep Graph Infomax  论文方向：图像领域 论文来源：2019 ICLR 论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1809.10341 论文代码：https:&#x2F;&#x2F;github.com&#x2F;PetarV-&#x2F;DGI 阅读时间：2022年3月7日  摘要   DGI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="哈士奇的博客">
 <meta property="og:url" content="http://example.com/2022/03/19/DGI/index.html">
 <meta property="og:site_name" content="哈士奇的博客">
-<meta property="og:description" content="title: * date: * tags: * mathjax: true Deep Graph Infomax  论文方向：图像领域 论文来源：2019 ICLR 论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1809.10341 论文代码：https:&#x2F;&#x2F;github.com&#x2F;PetarV-&#x2F;DGI 阅读时间：2022年3月7日  摘要   DGI 是一种基于图数据结构的表示节点嵌入">
+<meta property="og:description" content="title: Deep Graph Infomax date: * tags: * mathjax: true Deep Graph Infomax  论文方向：图像领域 论文来源：2019 ICLR 论文链接：https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1809.10341 论文代码：https:&#x2F;&#x2F;github.com&#x2F;PetarV-&#x2F;DGI 阅读时间：2022年3月7日  摘要   DGI">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2022-03-19T11:53:53.888Z">
-<meta property="article:modified_time" content="2022-03-19T12:36:12.030Z">
+<meta property="article:modified_time" content="2022-03-19T12:54:12.618Z">
 <meta property="article:author" content="王志强">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/03/19/DGI/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
@@ -52,7 +52,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-03-19 20:36:12'
+  postUpdate: '2022-03-19 20:54:12'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -141,10 +141,10 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">哈士奇的博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-19T11:53:53.888Z" title="发表于 2022-03-19 19:53:53">2022-03-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-19T12:36:12.030Z" title="更新于 2022-03-19 20:36:12">2022-03-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>title: *</p>
-<p>date: *</p>
-<p>tags: *</p>
-<p>mathjax: true</p>
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">哈士奇的博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-19T11:53:53.888Z" title="发表于 2022-03-19 19:53:53">2022-03-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-19T12:54:12.618Z" title="更新于 2022-03-19 20:54:12">2022-03-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>title: Deep Graph Infomax<br>
+date: *<br>
+tags: *<br>
+mathjax: true</p>
 <h1>Deep Graph Infomax</h1>
 <blockquote>
 <p>论文方向：图像领域</p>
