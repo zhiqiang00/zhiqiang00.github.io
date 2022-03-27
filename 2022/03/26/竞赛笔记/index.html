@@ -1,0 +1,338 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>竞赛实战案例-用户画像类 | hahahaha哈士奇</title><meta name="keywords" content="特征工程，用户画像"><meta name="author" content="Wangzhiqiang,1941686805@qq.com"><meta name="copyright" content="Wangzhiqiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="竞赛实战案例-用户画像类 一、数据探索   仔细查看每个数据的基本含义，打印出数据，看看是什么样子的   校验数据的正确性，缺失情   查看数据的分布的时候，除了看训练集和测试集的分布是否相似，还要看target的分布情况（describe）   查看数据的时候 需要看看是否有重复数据  nunique()   针对属性信息的字段的离散和连续性，分开后统一分析。注意不是是数值的就是连续的，要看实际">
+<meta property="og:type" content="article">
+<meta property="og:title" content="竞赛实战案例-用户画像类">
+<meta property="og:url" content="http://example.com/2022/03/26/%E7%AB%9E%E8%B5%9B%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="hahahaha哈士奇">
+<meta property="og:description" content="竞赛实战案例-用户画像类 一、数据探索   仔细查看每个数据的基本含义，打印出数据，看看是什么样子的   校验数据的正确性，缺失情   查看数据的分布的时候，除了看训练集和测试集的分布是否相似，还要看target的分布情况（describe）   查看数据的时候 需要看看是否有重复数据  nunique()   针对属性信息的字段的离散和连续性，分开后统一分析。注意不是是数值的就是连续的，要看实际">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e24723f0956f7819c9bf479295b501f7-RB7X0Q5te6s-86a933.jpg">
+<meta property="article:published_time" content="2022-03-26T06:10:22.642Z">
+<meta property="article:modified_time" content="2022-03-26T06:10:22.644Z">
+<meta property="article:author" content="Wangzhiqiang">
+<meta property="article:tag" content="特征工程，用户画像">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e24723f0956f7819c9bf479295b501f7-RB7X0Q5te6s-86a933.jpg"><link rel="shortcut icon" href="/img/1.png"><link rel="canonical" href="http://example.com/2022/03/26/%E7%AB%9E%E8%B5%9B%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"7YPRNTZSD2","apiKey":"09830cc4fa08aac22c5aaefcda4871be","indexName":"myIndex","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":350},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '竞赛实战案例-用户画像类',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-26 14:10:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="hahahaha哈士奇" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/1f2e377def5c6672de0cdeed4b54c36d-201672716495120191-a103ac.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">hahahaha哈士奇</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">竞赛实战案例-用户画像类</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-26T06:10:22.642Z" title="发表于 2022-03-26 14:10:22">2022-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-26T06:10:22.644Z" title="更新于 2022-03-26 14:10:22">2022-03-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="竞赛实战案例-用户画像类"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="竞赛实战案例-用户画像类">竞赛实战案例-用户画像类</h2>
+<h2 id="一、数据探索">一、数据探索</h2>
+<ol>
+<li>
+<p>仔细查看每个数据的基本含义，打印出数据，看看是什么样子的</p>
+</li>
+<li>
+<p>校验数据的正确性，缺失情</p>
+</li>
+<li>
+<p>查看数据的分布的时候，除了看训练集和测试集的分布是否相似，还要看target的分布情况（describe）</p>
+</li>
+<li>
+<p>查看数据的时候 需要看看是否有重复数据  <strong>nunique()</strong></p>
+</li>
+<li>
+<p>针对属性信息的字段的离散和连续性，分开后统一分析。注意不是是数值的就是连续的，要看实际情况。</p>
+<p><strong>1)离散型</strong>（还分为数值型和非数值型）</p>
+<ul>
+<li>**针对object类，**离散性变量一般要么是两个，要么是含有字典序，因此可按照字典序对object型变量先编码处理(id）</li>
+<li>从pd.Serise类型转为numpy.anrray类型 需要在pd类型的数据后面加上values</li>
+<li><strong>缺失值处理</strong>，同时为了能够更方便统计，首先做缺失值处理，对于非数值型离散字段可统一用-1进行填充</li>
+<li>需用describe()函数判断是否有正无穷</li>
+<li>在进行离散特征编码的时候，需要注意将值转为str，否则无法使用sort进行排序</li>
+</ul>
+<p><strong>2）连续型</strong></p>
+<ul>
+<li>查看缺失数据和无穷数据</li>
+</ul>
+<p><strong>3）时间类型</strong></p>
+<ul>
+<li>
+<p>关于时间的处理上，可以按照一些字符串操作提取相应的信息，比如直接提取年份、月份、日期和小时点等等</p>
+</li>
+<li>
+<p>还有一种相对万能可适用于各种场景的办法就是使用unix时间戳，可以灵活用于各种转换与计算</p>
+</li>
+<li>
+<p><strong>时间段（上午、下午、晚上、凌晨）</strong> 其实就是获取时间后整除6     //6</p>
+</li>
+<li>
+<p><strong>休息日or工作日</strong> <code> datetime.strptime(x.split(&quot; &quot;)[0], &quot;%Y-%m-%d&quot;).weekday()</code># weekday()返回0-6 分别代表周一到周日    这里整除5， 不是零就是一。 这两的datetime.strptime()就是将字符转为data对象</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、特征工程">二、特征工程</h2>
+<h3 id="1-通用特征">1. 通用特征</h3>
+<ul>
+<li>在进行特征编码的时候，需要将train和test一起编码</li>
+<li>删除数据文件之间的冗余数据
+<ul>
+<li>可以考虑用<code>set(new_transaction.columns) &amp; set(merchant.columns)</code>这种形式删除多余的列</li>
+<li>用<code>.drop_duplicates()</code>函数删除重复的行，非原地删除</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-业务特征">2. 业务特征</h3>
+<ul>
+<li>
+<p>利用pandas工具的groupby进行统计，对机器性能要求比价高。（为了pandas统计需要，不需要再对缺失值以及离散字段进行转化了？？？）</p>
+</li>
+<li>
+<p>利用diff()可以求两次行为之间的间隔时间。</p>
+</li>
+<li>
+<p>记性特征统计的时候需要分裂了统计</p>
+<ul>
+<li>连续性数值变量需要统计如下变量：<code>['nunique', 'mean', 'min', 'max','var','skew', 'sum']</code> <code>var</code>方差    <code>skew</code>偏态分布</li>
+<li>离散型变量需要统计如下变量：<code>['nunique']</code></li>
+<li>id类别：<code>['size', 'count']</code></li>
+</ul>
+</li>
+<li>
+<p>合理使用<code>df.groupby().agg([...]) </code> 先进行分组，然后对分组后的部分列进行聚合参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012706792/article/details/80892510?spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5.pc_relevant_paycolumn_v3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5.pc_relevant_paycolumn_v3&amp;utm_relevant_index=10">pandas group分组与agg聚合</a>。</p>
+</li>
+</ul>
+<h3 id="3-文本特征">3. 文本特征</h3>
+<ul>
+<li>
+<p><code>CountVectorizer</code>是属于常见的特征数值计算类，是一个文本特征提取方法。对于每一个训练文本，它只考虑每种词汇在该训练文本中出现的频率。</p>
+</li>
+<li>
+<p>TfidfVectorizer可以把原始文本转化为<code>tf-idf</code>的特征矩阵，从而为后续的文本相似度计算。</p>
+</li>
+</ul>
+<p><strong>上述两种方式实际上就是通过类统计词频的方式，没一句话都会由一个长度为单词表大小，每个位置代表单词的频率（CounterVectorizer）或者idf值（TfidfVectorizer）组成。即用向量表示文本。</strong></p>
+<blockquote>
+<p>在读取数据的时候，也要关注内存情况，可以使用del，gc.collect()释放内存。</p>
+</blockquote>
+<h2 id="三、模型训练">三、模型训练</h2>
+<h3 id="1-随机森林">1. 随机森林</h3>
+<h4 id="1-1-读取数据">1.1 读取数据</h4>
+<ul>
+<li>读取数据后，要去除重复列，拼接特征列。这里拼接特征一般用merge函数，记得用<code>fillna()</code>进行确实填充。</li>
+</ul>
+<h4 id="1-2-特征选取">1.2  特征选取</h4>
+<ul>
+<li>
+<p>把id、target这些列去掉，这些不算特征。</p>
+</li>
+<li>
+<p>去除缺失值比较多的特征</p>
+</li>
+<li>
+<p>进行pearson相关性计算，注意这里使用pearson针对的时线性相关，即判断两个变量之间的相关性。因为不论正负相关，其实都是相关的，所以要<strong>取绝对值</strong>。</p>
+<ul>
+<li>
+<p>输出格式为Dataframe类型，如图，所以取<code>.values[0][1] </code>，就是想要的相关系数。</p>
+<p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/22/56bcedcb561b261f58c9cddbb608b0a1-image-20220315100347217-235182.png" alt="image-20220315100347217"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>取top300的特征进行建模，具体数量可选</p>
+</li>
+</ul>
+<h4 id="1-3-参数调优">1.3 参数调优</h4>
+<ul>
+<li>使用sklearn库的网格搜索(GridSearch)</li>
+<li>实际上是不同参数、不同取值的排列集合。处理在一定的参数空间内进行搜索，还需要根据调优结果多次手动迭代参数空间。每次迭代都是在上次最佳参数的基础上增加没有搜索过的参数区域。</li>
+<li>输出的时含参数的最佳分类器。</li>
+</ul>
+<h4 id="1-4-训练预测">1.4 训练预测</h4>
+<ul>
+<li>使用k折交叉验证
+<ul>
+<li>避免模型对训练数据的过拟合</li>
+<li>模型对测试集的预测结果更具有健壮性。</li>
+<li>可以生产用于Stacking融合模型的特征，即训练集的交叉预测结果和测试集的模型预测结果。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-LightGBM">2. LightGBM</h3>
+<p>这个模型的四个模块和随机森林是一样的，特征选取使用了wrapper方法，参数调优阶段选择hyperopt。</p>
+<h4 id="2-1-特征提取">2.1 特征提取</h4>
+<p>这部分主要是选择出重要的特征参数，使用k折交叉验证，将数据分为几个train和test的形式，然后使用lgb进行train，最后得到的模型有一个<code>.feature_importance()</code>属性，然后进行排序就可以了。</p>
+<p>这里的输入只是使用了train的数据，没有使用test的。</p>
+<h4 id="2-2-参数调优">2.2 参数调优</h4>
+<p>Hyperopt 是一个sklearn的Python库，他在搜索空间进行串行和并行的优化，搜索空间可以实值、离散值和条件维度，提供了传递参数空间和评估函数的接口。</p>
+<p>这里的输入只是用到了train，输出是<strong>最佳的参数字典</strong>。</p>
+<h4 id="2-3-需要进行计算的部分">2.3 需要进行计算的部分</h4>
+<ul>
+<li>需要计算所有test的数据预测的价格是多少，就是k折验证每次累加，最后求平均值。</li>
+<li>需要计算所有train的数据预测的价格是多少，就是k折验证每次累加，最后求平均值。</li>
+<li>需要计算单次k折验证的时候，针对train的价格计算mse，用来计算最后的score。</li>
+<li>最后保存的submission和第一个其实是一样的，只不过改成了需要的提交格式<code>[card_id, target]</code></li>
+</ul>
+<h2 id="四、模型融合">四、模型融合</h2>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1941686805@qq.com">Wangzhiqiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/03/26/%E7%AB%9E%E8%B5%9B%E7%AC%94%E8%AE%B0/">http://example.com/2022/03/26/%E7%AB%9E%E8%B5%9B%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">hahahaha哈士奇</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%EF%BC%8C%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/">特征工程，用户画像</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e24723f0956f7819c9bf479295b501f7-RB7X0Q5te6s-86a933.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e10b5ee4c740dbc358231b386ec0ce88-image-20220320190054218-938bb2.png" target="_blank"><img class="post-qr-code-img" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e10b5ee4c740dbc358231b386ec0ce88-image-20220320190054218-938bb2.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/2f304c57c620209d44ba0b66e099c092-image-20220320190039458-2fb3a9.png" target="_blank"><img class="post-qr-code-img" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/2f304c57c620209d44ba0b66e099c092-image-20220320190039458-2fb3a9.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/27/%E4%BB%A3%E7%90%86%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E8%A7%A3%E5%86%B3%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8Chrome%E4%B8%8D%E8%83%BD%E4%B8%8A%E7%BD%91%EF%BC%8C%E5%85%B6%E4%BB%96%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%AF%E4%BB%A5%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E7%9A%84%E9%97%AE%E9%A2%98/"><img class="prev-cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/7f0f94f3ea0db706c233c4bcb413c046-XfMeXNI42d8-b472ff.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">代理情况下，解决谷歌浏览器Chrome不能上网，其他浏览器可以谷歌搜索的问题</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/25/LC-102%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/"><img class="next-cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/21/dae18aaed7ba285365dfc66efc93c0b2-614c4ad81befc-a6dbfe.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">LC-102二叉树的层序遍历</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/03/21/%E7%AB%9E%E8%B5%9B%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B-%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E7%B1%BB/" title="竞赛实战案例-用户画像类"><img class="cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e24723f0956f7819c9bf479295b501f7-RB7X0Q5te6s-86a933.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-21</div><div class="title">竞赛实战案例-用户画像类</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NDcwMi8zMTE3Mw=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/1f2e377def5c6672de0cdeed4b54c36d-201672716495120191-a103ac.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Wangzhiqiang</div><div class="author-info__description">一只在路上的哈士奇</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zhiqiang00"><i class="fab fa-github"></i><span>关注我吧~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zhiqiang00" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/wang-zhi-qiang-o/" target="_blank" title="LeetCode"><i class="fas fa-duotone fa-code"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_43351000?type=blog" target="_blank" title="CSDN"><i class="iconfont icon-csdn1"></i></a><a class="social-icon" href="mailto:1941686805@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">在这里记录自己学习的点点滴滴，希望和大家一起成长~欢迎分享交流哇！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%9E%E8%B5%9B%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B-%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E7%B1%BB"><span class="toc-text">竞赛实战案例-用户画像类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2"><span class="toc-text">一、数据探索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="toc-text">二、特征工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%9A%E7%94%A8%E7%89%B9%E5%BE%81"><span class="toc-text">1. 通用特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%9A%E5%8A%A1%E7%89%B9%E5%BE%81"><span class="toc-text">2. 业务特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81"><span class="toc-text">3. 文本特征</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83"><span class="toc-text">三、模型训练</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97"><span class="toc-text">1. 随机森林</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">1.1 读取数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E7%89%B9%E5%BE%81%E9%80%89%E5%8F%96"><span class="toc-text">1.2  特征选取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98"><span class="toc-text">1.3 参数调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-%E8%AE%AD%E7%BB%83%E9%A2%84%E6%B5%8B"><span class="toc-text">1.4 训练预测</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-LightGBM"><span class="toc-text">2. LightGBM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-text">2.1 特征提取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98"><span class="toc-text">2.2 参数调优</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E8%AE%A1%E7%AE%97%E7%9A%84%E9%83%A8%E5%88%86"><span class="toc-text">2.3 需要进行计算的部分</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A8%A1%E5%9E%8B%E8%9E%8D%E5%90%88"><span class="toc-text">四、模型融合</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/27/%E4%BB%A3%E7%90%86%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E8%A7%A3%E5%86%B3%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8Chrome%E4%B8%8D%E8%83%BD%E4%B8%8A%E7%BD%91%EF%BC%8C%E5%85%B6%E4%BB%96%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%AF%E4%BB%A5%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E7%9A%84%E9%97%AE%E9%A2%98/" title="代理情况下，解决谷歌浏览器Chrome不能上网，其他浏览器可以谷歌搜索的问题"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/7f0f94f3ea0db706c233c4bcb413c046-XfMeXNI42d8-b472ff.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="代理情况下，解决谷歌浏览器Chrome不能上网，其他浏览器可以谷歌搜索的问题"/></a><div class="content"><a class="title" href="/2022/03/27/%E4%BB%A3%E7%90%86%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E8%A7%A3%E5%86%B3%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8Chrome%E4%B8%8D%E8%83%BD%E4%B8%8A%E7%BD%91%EF%BC%8C%E5%85%B6%E4%BB%96%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%AF%E4%BB%A5%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E7%9A%84%E9%97%AE%E9%A2%98/" title="代理情况下，解决谷歌浏览器Chrome不能上网，其他浏览器可以谷歌搜索的问题">代理情况下，解决谷歌浏览器Chrome不能上网，其他浏览器可以谷歌搜索的问题</a><time datetime="2022-03-27T02:22:29.185Z" title="发表于 2022-03-27 10:22:29">2022-03-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/26/%E7%AB%9E%E8%B5%9B%E7%AC%94%E8%AE%B0/" title="竞赛实战案例-用户画像类"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e24723f0956f7819c9bf479295b501f7-RB7X0Q5te6s-86a933.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="竞赛实战案例-用户画像类"/></a><div class="content"><a class="title" href="/2022/03/26/%E7%AB%9E%E8%B5%9B%E7%AC%94%E8%AE%B0/" title="竞赛实战案例-用户画像类">竞赛实战案例-用户画像类</a><time datetime="2022-03-26T06:10:22.642Z" title="发表于 2022-03-26 14:10:22">2022-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/25/LC-102%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" title="LC-102二叉树的层序遍历"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/21/dae18aaed7ba285365dfc66efc93c0b2-614c4ad81befc-a6dbfe.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LC-102二叉树的层序遍历"/></a><div class="content"><a class="title" href="/2022/03/25/LC-102%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" title="LC-102二叉树的层序遍历">LC-102二叉树的层序遍历</a><time datetime="2022-03-25T12:58:10.578Z" title="发表于 2022-03-25 20:58:10">2022-03-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/21/LC-18%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/" title="LC-18四数之和"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/21/dae18aaed7ba285365dfc66efc93c0b2-614c4ad81befc-a6dbfe.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LC-18四数之和"/></a><div class="content"><a class="title" href="/2022/03/21/LC-18%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/" title="LC-18四数之和">LC-18四数之和</a><time datetime="2022-03-21T13:31:51.757Z" title="发表于 2022-03-21 21:31:51">2022-03-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/21/Github%E7%BB%8F%E5%B8%B8%E6%80%A7%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" title="机器学习-集成学习"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习-集成学习"/></a><div class="content"><a class="title" href="/2022/03/21/Github%E7%BB%8F%E5%B8%B8%E6%80%A7%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" title="机器学习-集成学习">机器学习-集成学习</a><time datetime="2022-03-20T18:51:20.021Z" title="发表于 2022-03-21 02:51:20">2022-03-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 By Wangzhiqiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎您的访问！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Algolia</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script id="click-show-text" src="/%5Bobject%20Object%5D" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
