@@ -1,0 +1,14 @@
+---
+title: 我的本科经历
+date: 2022-03-28 13:53:29
+categories:
+tags:
+katex: true
+cover: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/32f3d76440f130f63a8c3f4d789fd881-wallhaven-k7lxxq-0dab01.jpg
+top_img: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg
+---
+
+<iframe src="cv.pdf#toolbar=0." width="800px" height="1210px" frameborder="0" scrolling="no"></iframe>
+
+
+

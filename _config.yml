@@ -3,13 +3,14 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 哈士奇的博客
+title: hahahaha哈士奇
 subtitle: ''
-description: ''
+description: '一只在路上的哈士奇'
 keywords:
-author: '王志强'
+author: 'Wangzhiqiang'
 language: zh-CN
 timezone: ''
+email: 1941686805@qq.com
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -40,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -97,13 +98,23 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: butterfly
+theme: Butterfly
+#RSS订阅
+plugin:
+- hexo-generator-feed
+#Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/zhiqiang00/zhiqiang00.github.io.git
+  repo: 
+    gitee: https://gitee.com/zhiqiang01/zhiqiang01.gitee.io.git
+    github: https://github.com/zhiqiang00/zhiqiang00.github.io.git
   branch: main
 
 markdown:
@@ -112,3 +123,27 @@ markdown:
      name: '@neilsustc/markdown-it-katex'
      options:
        strict: false
+
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-tororo
+  display:
+    position: left
+    width: 150
+    height: 300
+  mobile:
+    show: true
+
+# 网站搜索功能
+algolia:
+  applicationID: '7YPRNTZSD2'
+  apiKey: '09830cc4fa08aac22c5aaefcda4871be'
+  indexName: 'myIndex'
+  chunkSize: 5000
