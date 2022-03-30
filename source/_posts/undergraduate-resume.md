@@ -8,8 +8,11 @@ cover: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022
 top_img: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg
 ---
 
+<<<<<<< HEAD
 最近有低年级学弟学妹参加相关夏令营，想参考一下我的建立，为例增加一下我的访问量，遂讲cv传到博客来，哈哈哈哈~
 
+=======
+>>>>>>> 108e13c73244de98f921ae5b23eb4795c05f4e25
 <iframe src="cv.pdf#toolbar=0." width="800px" height="1210px" frameborder="0" scrolling="no"></iframe>
 
 
