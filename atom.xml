@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-03-28T14:18:49.436Z</updated>
+  <updated>2022-03-30T09:06:27.607Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如使用清华镜像快速下载</title>
+    <link href="http://example.com/2022/03/30/%E5%A6%82%E4%BD%BF%E7%94%A8%E6%B8%85%E5%8D%8E%E9%95%9C%E5%83%8F%E5%BF%AB%E9%80%9F%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://example.com/2022/03/30/%E5%A6%82%E4%BD%BF%E7%94%A8%E6%B8%85%E5%8D%8E%E9%95%9C%E5%83%8F%E5%BF%AB%E9%80%9F%E4%B8%8B%E8%BD%BD/</id>
+    <published>2022-03-30T09:02:35.342Z</published>
+    <updated>2022-03-30T09:06:27.607Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题背景">问题背景</h2><p>平时安装一些python包的过程中，总会面临安装下载过慢，<code>time out</code>的情况，今天提供一个方法能够快速安装包。首先介绍一下官网提供的方法。</p><h2 id="官网下载方法">官网下载方法</h2><p>这里以下载dgl为例、</p><ul><li>首先去<a href="https://www.dgl.ai/pages/start.html">dgl官网</a>，点击install，可以看到如下界面：</li></ul><p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/30/e36ad8f3b33917db693979345b1be384-image-20220330163854997-89a580.png" alt="image-20220330163854997"></p><ul><li><p>根据你的服务器or电脑的配置选择相关配置，然后在命令行里面输入Run this 的代码。这里以linux为例，输入<code>nvidia-smi</code>查看自己的cuda的版本(这里如果你有自己的虚拟环境，记得使用 <code>conda activate xxx</code> 激活)，如下：</p><p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/30/32e8629551399304dc26382b1503bdda-image-20220330164252219-8eaab4.png" alt="image-20220330164252219"></p><p>一般情况下，<strong>使用这种办法容易碰到time out</strong>的错误，原因就是网络不稳定造成的。这时候我们考虑使用清华镜像。</p><p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/30/5f112d7872fc3224accbaa46d32b3c6a-image-20220330164528766-57aaf3.png" alt="image-20220330164528766"></p></li></ul><h2 id="使用清华镜像">使用清华镜像</h2><p>在使用清华镜像的时候，我们一般就是使用<code>pip install package -i https://pypi.tuna.tsinghua.edu.cn/simple </code> 这样的方式，下载，但是有时候我们会碰到如下的报错：</p><p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/30/802b1155b5987b0f49c4cd4a8a6d917b-image-20220330165208169-4163c0.png" alt="image-20220330165208169"></p><p>这个错误的原因是因为在清华镜像源中，没有和我们想要的包的名字相同。这时我们需要进入到<a href="https://pypi.tuna.tsinghua.edu.cn/simple/">镜像</a>中，<code>ctrl + F</code>检索我们要的包，找到一个和我们的版本相近似的或者和cuda兼容的包：</p><p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/30/587e27a44c9afd4273b4da8f796f3940-image-20220330165116062-ebb0aa.png" alt="image-20220330165116062"></p><p>然后，重新下载(这里以dgl-cu111为例)，输入命令<code>pip install dgl-cu111 dglgo  -i https://pypi.tuna.tsinghua.edu.cn/simple</code> :</p><p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/30/e3842c9d275500e9768a6bcf6e6a6bfc-image-20220330165553413-579e26.png" alt="image-20220330165553413"></p><p>然后就可以快速下载啦~</p><blockquote><p><a href="https://blog.csdn.net/qq_43351000?type=blog">欢迎关注我的CSDN个人博客~</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;问题背景&quot;&gt;问题背景&lt;/h2&gt;
+&lt;p&gt;平时安装一些python包的过程中，总会面临安装下载过慢，&lt;code&gt;time out&lt;/code&gt;的情况，今天提供一个方法能够快速安装包。首先介绍一下官网提供的方法。&lt;/p&gt;
+&lt;h2 id=&quot;官网下载方法&quot;&gt;官网下载方法&lt;/</summary>
+      
+    
+    
+    
+    <category term="python，linux" scheme="http://example.com/categories/python%EF%BC%8Clinux/"/>
+    
+    
+    <category term="python，linux" scheme="http://example.com/tags/python%EF%BC%8Clinux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LC-101对称二叉树</title>
+    <link href="http://example.com/2022/03/30/LC-101%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <id>http://example.com/2022/03/30/LC-101%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/</id>
+    <published>2022-03-30T07:30:58.488Z</published>
+    <updated>2022-03-30T08:30:59.108Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode-cn.com/problems/symmetric-tree/">LC-101对称二叉树</a></p><h2 id="递归法">递归法</h2><p>使用递归的时候，主要思想是将根节点下面左右子树分别同时递归，然后在递归过程中进行比较，需要注意的时，比较的时候，应该是同层的 <strong>n1.left 和 n2.right</strong>  以及  <strong>n1.right 和 n2.left</strong> 进行比较，最后如果这两个比较同时为True，那么该层的递归返回True。(<strong>这里之所以这样比较，是因为这是判断中心轴对称问题</strong>)</p><p>按照递归三部曲</p><ol><li>确定递归函数的参数和返回值</li></ol><p>这里比较根节点的两个子树，所以输入函数的应该是两个子树。</p><p>返回值，就是是否该层递归比较的结果</p><ol start="2"><li><p>确定终止条件、</p><p>这里是重点，之所以说这里是重点，是因为如果不处理好终止条件，就没办法控制节点为空的情况，那么后面数值比较的时候就会出现空指针的问题。</p><p><strong>节点有空的情况有：</strong></p></li></ol><ul><li><p>左边空，右边不空，不对称，return False</p></li><li><p>左边不空，右边空，不对称，return False</p></li><li><p>左右都空，对称，return True</p><p><strong>节点不空的情况(排除了上面为空的情况，下面就是都不空了)：</strong></p><p>左右都不空，如果val不相等，不那么return False。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> left == <span class="literal">None</span> <span class="keyword">and</span> right != <span class="literal">None</span>: <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">       <span class="keyword">elif</span> left != <span class="literal">None</span> <span class="keyword">and</span> right == <span class="literal">None</span>: <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">       <span class="keyword">elif</span> left == <span class="literal">None</span> <span class="keyword">and</span> right == <span class="literal">None</span>: <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">       <span class="comment">#排除了空节点，再排除数值不相同的情况</span></span><br><span class="line">       <span class="keyword">elif</span> left.val != right.val: <span class="keyword">return</span> <span class="literal">False</span>    </span><br></pre></td></tr></table></figure><p>这里可以看到我们最后一个用的是elif而不是else，**因为这里我们就可以知道 在这之后，就只有左右不为空并且数值相同了。**这个节点判断完了之后，我们才可以进行单词递归，否则这里就直接返回了。换句话说，只有本层确定是可以了，我们才继续递归，同时对本层的比较不再额外return，本层的return用来返回本层四个节点的两两比较(n1.left 和 n2.right  以及  n1.right 和 n2.left)。</p></li></ul><ol start="3"><li><p>确定单层递归的逻辑</p><p>单层递归的逻辑就是处理 左右节点都不为空，且数值相同的情况</p><p>也就是在递归的时候，比较n1.left 和 n2.right  以及  n1.right 和 n2.left，并分别返回bool值，如果都对此则return True，否则 False</p><p>这里可以理解为最后将两个结果进行比较的时候，在进行左右子树的根节点的处理，于是整个过程退化近似后序遍历。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">outside = self.compare(left.left, right.right) <span class="comment">#左子树：左、 右子树：右</span></span><br><span class="line">inside = self.compare(left.right, right.left) <span class="comment">#左子树：右、 右子树：左</span></span><br><span class="line">isSame = outside <span class="keyword">and</span> inside <span class="comment">#左子树：中、 右子树：中 （逻辑处理）</span></span><br></pre></td></tr></table></figure></li></ol><h2 id="迭代法-队列">迭代法(队列)</h2><p>跌打法使用了一个小的技巧，就是每次使用一个容器把两边的节点同时加入到这个容器当中，然后进行比价就好了，这个容器可以是<strong>队列</strong>也可以是<strong>栈</strong>。</p><ul><li><p>在每次取出两个节点进行比较的时候：</p><ul><li>判断是否同时为空，如果是，则是对称的，并且不需要添加新的节点了，所以用continue。</li><li>如果上面判断后，如果两个节点有一个为空，或者都不为空但是数值不同，那么return False</li></ul></li><li><p>最后，交叉加入新的节点，具体如下(和上面所提一样)：</p><ul><li>queue.append(leftNode.left) #加入左节点左孩子</li><li>queue.append(rightNode.right) #加入右节点右孩子</li><li>queue.append(leftNode.right) #加入左节点右孩子</li><li>queue.append(rightNode.left) #加入右节点左孩子</li></ul></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isSymmetric</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        queue = collections.deque()</span><br><span class="line">        queue.append(root.left) <span class="comment">#将左子树头结点加入队列</span></span><br><span class="line">        queue.append(root.right) <span class="comment">#将右子树头结点加入队列</span></span><br><span class="line">        <span class="keyword">while</span> queue: <span class="comment">#接下来就要判断这这两个树是否相互翻转</span></span><br><span class="line">            leftNode = queue.popleft()</span><br><span class="line">            rightNode = queue.popleft()</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> leftNode <span class="keyword">and</span> <span class="keyword">not</span> rightNode: <span class="comment">#左节点为空、右节点为空，此时说明是对称的</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">#左右一个节点不为空，或者都不为空但数值不相同，返回false</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> leftNode <span class="keyword">or</span> <span class="keyword">not</span> rightNode <span class="keyword">or</span> leftNode.val != rightNode.val:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            queue.append(leftNode.left) <span class="comment">#加入左节点左孩子</span></span><br><span class="line">            queue.append(rightNode.right) <span class="comment">#加入右节点右孩子</span></span><br><span class="line">            queue.append(leftNode.right) <span class="comment">#加入左节点右孩子</span></span><br><span class="line">            queue.append(rightNode.left) <span class="comment">#加入右节点左孩子</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><h2 id="迭代法-栈">迭代法(栈)</h2><p>就是换了一个容器，直接将队列换成栈就可以啦~</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/symmetric-tree/&quot;&gt;LC-101对称二叉树&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;递归法&quot;&gt;递归法&lt;/h2&gt;
+&lt;p&gt;使用递归的时候，主要思想是将根节点下面左右子树分别同时递归，然后在</summary>
+      
+    
+    
+    
+    <category term="LeetCode" scheme="http://example.com/categories/LeetCode/"/>
+    
+    
+    <category term="二叉树" scheme="http://example.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Game-模型融合</title>
@@ -48,15 +100,15 @@
     <link href="http://example.com/2022/03/28/undergraduate-resume/"/>
     <id>http://example.com/2022/03/28/undergraduate-resume/</id>
     <published>2022-03-28T05:53:29.000Z</published>
-    <updated>2022-03-28T06:47:10.814Z</updated>
+    <updated>2022-03-30T09:02:19.739Z</updated>
     
-    <content type="html"><![CDATA[<iframe src="cv.pdf#toolbar=0." width="800px" height="1210px" frameborder="0" scrolling="no"></iframe>]]></content>
+    <content type="html"><![CDATA[<p>最近有低年级学弟学妹参加相关夏令营，想参考一下我的建立，为例增加一下我的访问量，遂讲cv传到博客来，哈哈哈哈~</p><iframe src="cv.pdf#toolbar=0." width="800px" height="1210px" frameborder="0" scrolling="no"></iframe>]]></content>
     
     
       
       
-    <summary type="html">&lt;iframe src=&quot;cv.pdf#toolbar=0.&quot; width=&quot;800px&quot; height=&quot;1210px&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;
-</summary>
+    <summary type="html">&lt;p&gt;最近有低年级学弟学妹参加相关夏令营，想参考一下我的建立，为例增加一下我的访问量，遂讲cv传到博客来，哈哈哈哈~&lt;/p&gt;
+&lt;iframe src=&quot;cv.pdf#toolbar=0.&quot; width=&quot;800px&quot; height=&quot;1210px&quot; frameborder=&quot;0&quot;</summary>
       
     
     
