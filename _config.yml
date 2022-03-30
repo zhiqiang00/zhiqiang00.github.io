@@ -113,7 +113,7 @@ feed:
 deploy:
   type: git
   repo: 
-    gitee: https://gitee.com/zhiqiang01/zhiqiang01.gitee.io.git
+    # gitee: https://gitee.com/zhiqiang01/zhiqiang01.gitee.io.git
     github: https://github.com/zhiqiang00/zhiqiang00.github.io.git
   branch: main
 
