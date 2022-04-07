@@ -1,5 +1,5 @@
 ---
-title: Game-模型融合
+title: Competition06-模型融合
 date: 2022年3月17日
 categories: [竞赛]
 tags: [模型融合]
@@ -9,7 +9,7 @@ top_img: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/20
 
 ---
 
-## Game-模型融合
+## 模型融合
 
 模型融合，也叫做集成学习，将不同模型的优点进行结合。下面介绍了怎么产生有差异性的模型，然后介绍两种模型融合的方式：
 

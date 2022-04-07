@@ -1,5 +1,5 @@
 ---
-title: Deep Graph Infomax
+title: Paper-Deep-Graph-Infomax
 date: 2022年3月19日
 tags: [对比学习, 无监督]
 categories: [论文阅读]

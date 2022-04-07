@@ -1,5 +1,5 @@
 ---
-title: 机器学习-集成学习
+title: ML-集成学习
 date: 2022年3月12日
 categories: [机器学习]
 tags: [集成学习，随机森林, Boosting, Bagging]

@@ -178,3 +178,19 @@ template {
 [hidden] {
   display: none
 }
+
+/*鼠标样式*/
+body {
+    cursor: url(http://img.xbobo.info/images/2021/06/27/3.png), auto;
+}
+
+.hide-block>.hide-button.open,
+.hide-inline>.hide-button.open {
+    display: block
+}
+
+a,
+button,
+img {
+    cursor: url(http://img.xbobo.info/images/2021/06/27/2-2.png), auto
+}

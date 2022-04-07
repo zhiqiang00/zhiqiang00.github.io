@@ -112,9 +112,9 @@ feed:
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: 
+  repo: https://github.com/zhiqiang00/zhiqiang00.github.io.git
     # gitee: https://gitee.com/zhiqiang01/zhiqiang01.gitee.io.git
-    github: https://github.com/zhiqiang00/zhiqiang00.github.io.git
+    # github: https://github.com/zhiqiang00/zhiqiang00.github.io.git
   branch: main
 
 markdown:

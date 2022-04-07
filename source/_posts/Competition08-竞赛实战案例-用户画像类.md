@@ -1,5 +1,5 @@
 ---
-title: Game-竞赛实战案例-用户画像类
+title: Competition08-竞赛实战案例-用户画像类
 date: 2022年3月17日
 categories: [竞赛]
 tags: [特征工程，用户画像]
@@ -8,7 +8,7 @@ cover: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022
 top_img: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg
 ---
 
-## Game-竞赛实战案例-用户画像类
+## 竞赛实战案例-用户画像类
 
 ## 一、数据探索
 
@@ -137,7 +137,7 @@ Hyperopt 是一个sklearn的Python库，他在搜索空间进行串行和并行�
 - 需要计算单次k折验证的时候，针对train的价格计算mse，用来计算最后的score。**这个得分用于后面的模型融合。**
 - 最后保存的submission和第一个其实是一样的，只不过改成了需要的提交格式`[card_id, target]`
 
-### 3 XGboot
+### 3. XGboot
 
 #### 3.1 特征提取
 
@@ -153,7 +153,44 @@ Hyperopt 是一个sklearn的Python库，他在搜索空间进行串行和并行�
 
 
 
-## 四、模型融合
+## 四、高效提分
+
+### 1. 特征优化
+
+#### 1.1 基础统计特征
+
+这部分主要以card_id为key进行聚合统计。
+
+####  1.2 全局card_id
+
+主要包括与用户行为相关时间相关的统计。
+
+#### 1.3 最近两个月的card_id
+
+和上面的类似，主要区别在于时间范围不同。
+
+#### 1.4 补充特征
+
+此部分特征大多数具有也业务意义，比如更好的发现异常值。
+
+### 2. 融合技巧
+
+#### 2.1 单模结果
+
+#### 2.2 加权融合
+
+`Weight_average = (LightGBM + XGBoost + CatBoots) / 3`
+
+#### 2.3 Stacking融合
+
+#### 2.4 Trick 融合
+
+- 方案一：分类模型结果 * （-33.219281） + （1 - 分类结果）* 非异常值得回归模型
+- 方案而：方案一的结果 * 0.5 + 全量数据的归回模型
+
+
+
+
 
 
 
