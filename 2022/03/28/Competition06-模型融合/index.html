@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Competition06-模型融合 | hahahaha哈士奇</title><meta name="keywords" content="模型融合"><meta name="author" content="Wangzhiqiang,1941686805@qq.com"><meta name="copyright" content="Wangzhiqiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="模型融合 模型融合，也叫做集成学习，将不同模型的优点进行结合。下面介绍了怎么产生有差异性的模型，然后介绍两种模型融合的方式： 1. 构建多样性 多样性是指子模型之间存在差异，可以通过降低子模型的同质性来构建多样性。 1.1 特征多样性 构建多个有差异的特征集并分别进行建模，可以使特征存在不同的超空间，从而使多个模型有不同的泛化能力。实践中，不同队友之间的特征集往往是不一样的，直接进行模型融合一般会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Competition06-模型融合">
+<meta property="og:url" content="http://example.com/2022/03/28/Competition06-%E6%A8%A1%E5%9E%8B%E8%9E%8D%E5%90%88/index.html">
+<meta property="og:site_name" content="hahahaha哈士奇">
+<meta property="og:description" content="模型融合 模型融合，也叫做集成学习，将不同模型的优点进行结合。下面介绍了怎么产生有差异性的模型，然后介绍两种模型融合的方式： 1. 构建多样性 多样性是指子模型之间存在差异，可以通过降低子模型的同质性来构建多样性。 1.1 特征多样性 构建多个有差异的特征集并分别进行建模，可以使特征存在不同的超空间，从而使多个模型有不同的泛化能力。实践中，不同队友之间的特征集往往是不一样的，直接进行模型融合一般会">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e24723f0956f7819c9bf479295b501f7-RB7X0Q5te6s-86a933.jpg">
+<meta property="article:published_time" content="2022-03-28T07:40:41.926Z">
+<meta property="article:modified_time" content="2022-04-01T08:45:49.329Z">
+<meta property="article:author" content="Wangzhiqiang">
+<meta property="article:tag" content="模型融合">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e24723f0956f7819c9bf479295b501f7-RB7X0Q5te6s-86a933.jpg"><link rel="shortcut icon" href="/img/2.png"><link rel="canonical" href="http://example.com/2022/03/28/Competition06-%E6%A8%A1%E5%9E%8B%E8%9E%8D%E5%90%88/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"7YPRNTZSD2","apiKey":"09830cc4fa08aac22c5aaefcda4871be","indexName":"myIndex","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":350},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Competition06-模型融合',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-01 16:45:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="hahahaha哈士奇" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/1f2e377def5c6672de0cdeed4b54c36d-201672716495120191-a103ac.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">hahahaha哈士奇</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Competition06-模型融合</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-28T07:40:41.926Z" title="发表于 2022-03-28 15:40:41">2022-03-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-01T08:45:49.329Z" title="更新于 2022-04-01 16:45:49">2022-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">977</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Competition06-模型融合"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="模型融合">模型融合</h2>
+<p>模型融合，也叫做集成学习，将不同模型的优点进行结合。下面介绍了怎么产生有差异性的模型，然后介绍两种模型融合的方式：</p>
+<h3 id="1-构建多样性">1. 构建多样性</h3>
+<p>多样性是指子模型之间存在差异，可以通过降低子模型的同质性来构建多样性。</p>
+<h4 id="1-1-特征多样性">1.1 特征多样性</h4>
+<p>构建多个有差异的特征集并分别进行建模，可以使特征存在不同的超空间，从而使多个模型有不同的泛化能力。实践中，不同队友之间的特征集往往是不一样的，直接进行模型融合一般会有一定提升。</p>
+<p>随机森林、XGBoost和LightGBM这三个里面都有参数可以设置，其实就是构建特征的多样性。</p>
+<h4 id="1-2-样本多样性">1.2 样本多样性</h4>
+<p>样本多样性是将数据集切分为多份，然后进行分别建模。有时候切分数据集不是随意的，而是根据具体的赛题，最大限度并且合理的去切分数据集，从而既能保证多样性，还能更好的让模型捕获不同方面的数据特征。</p>
+<h4 id="1-3-模型多样性">1.3 模型多样性</h4>
+<p>不同模型对数据的表达能力是不同的：</p>
+<ul>
+<li>FM能够学习到特征之间的交叉信息，并且记忆力较强；</li>
+<li>树模型可以很好的处理连续特征和离散特征(LightGBM和CatBoost)，并且对异常值也具有较好的健壮性。</li>
+<li>传统的树模型和神经网络也需要尝试，并进行融合。</li>
+</ul>
+<p>处理上述方法，还可以<strong>训练目标多样性</strong>、<strong>参数多样性</strong>和<strong>损失函数多样性</strong>。</p>
+<h3 id="2-训练过程融合">2. 训练过程融合</h3>
+<p>训练过程融合的模型包括随机森林和XGBoost，这两个模型都是在训练中构造多个决策树进行融合。</p>
+<p>其中，<strong>随机森林通过Bagging的方式</strong>，<strong>XGBoost通过Boosting的方式</strong>进行融合。</p>
+<h3 id="3-训练结果融合">3. 训练结果融合</h3>
+<p>主要包括加权法，Stacking和Blending。结果融合的方式选择和具体的赛题和评价规则有很大的关系。</p>
+<h4 id="3-1-加权法">3.1 加权法</h4>
+<p>针对一系列任务（比如分类和回归）和评价指标（如AUC，MSE和Logloss）都是有效的。</p>
+<p>具体做法是有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个算法模型并都预测了结果，直接对着 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个结果取平均值或者给予每个算法不同的权重然后加权求和，记得到了融合结果。</p>
+<p>这个方法，通常可以减少过拟合，因为每个模型有一定的噪音；同时，可以平滑噪声，提高模型泛化能力。</p>
+<ul>
+<li>
+<p><strong>分类问题</strong></p>
+<p>输出是one-hot类型，可以使用加权加或者投票法。</p>
+</li>
+<li>
+<p><strong>回归问题</strong></p>
+<p>针对结果可以考虑使用<strong>加权法</strong>、<strong>算数平均</strong>和<strong>几何平均</strong>，这个和不同的赛题设置的评分规则有关系。</p>
+<p>2019年腾讯广告大赛中，评分规则是对称平均绝对百分比误差(SMAPE)，这个规则越小的值对评分影响越大，而算是平均会导致结果偏大，所以选择<strong>几何平均</strong>。</p>
+</li>
+<li>
+<p><strong>排序问题</strong></p>
+</li>
+</ul>
+<h4 id="3-2-Stacking融合">3.2 Stacking融合</h4>
+<p>为了解决加权法需要人工确定权重的问题，使用一个新的模型来学习每个分类器的权重。这就是Stacking的融合思想。</p>
+<p>注意：</p>
+<ul>
+<li>构建的新的模型一般是简单模型，比如逻辑回归线性模型；</li>
+<li>使用多个模型斤进行Stacking融合会有比较好的结果。</li>
+</ul>
+<p>详细介绍在参考文献。</p>
+<h4 id="3-3-Blending融合">3.3 Blending融合</h4>
+<p>见参考文献</p>
+<blockquote>
+<p><strong>参考文献</strong></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25836678">【机器学习】模型融合方法概述</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26890738">Kaggle机器学习之模型融合（stacking）心得</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_35821976/article/details/83622594">图解Blending&amp;Stacking</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_35821976/article/details/89845588">从零实现机器学习算法(七) Blending</a></li>
+</ol>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1941686805@qq.com">Wangzhiqiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/03/28/Competition06-%E6%A8%A1%E5%9E%8B%E8%9E%8D%E5%90%88/">http://example.com/2022/03/28/Competition06-%E6%A8%A1%E5%9E%8B%E8%9E%8D%E5%90%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">hahahaha哈士奇</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%A8%A1%E5%9E%8B%E8%9E%8D%E5%90%88/">模型融合</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e24723f0956f7819c9bf479295b501f7-RB7X0Q5te6s-86a933.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e10b5ee4c740dbc358231b386ec0ce88-image-20220320190054218-938bb2.png" target="_blank"><img class="post-qr-code-img" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e10b5ee4c740dbc358231b386ec0ce88-image-20220320190054218-938bb2.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/2f304c57c620209d44ba0b66e099c092-image-20220320190039458-2fb3a9.png" target="_blank"><img class="post-qr-code-img" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/2f304c57c620209d44ba0b66e099c092-image-20220320190039458-2fb3a9.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/30/LC-101%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/"><img class="prev-cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/21/dae18aaed7ba285365dfc66efc93c0b2-614c4ad81befc-a6dbfe.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">LC-101.对称二叉树</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/28/%E6%9C%AC%E7%A7%91%E7%BB%8F%E5%8E%86/"><img class="next-cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/32f3d76440f130f63a8c3f4d789fd881-wallhaven-k7lxxq-0dab01.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我的本科经历</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NDcwMi8zMTE3Mw=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/1f2e377def5c6672de0cdeed4b54c36d-201672716495120191-a103ac.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Wangzhiqiang</div><div class="author-info__description">一只在路上的哈士奇</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zhiqiang00"><i class="fab fa-github"></i><span>关注我吧~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zhiqiang00" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/wang-zhi-qiang-o/" target="_blank" title="LeetCode"><i class="fas fa-duotone fa-code"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_43351000?type=blog" target="_blank" title="CSDN"><i class="iconfont icon-csdn1"></i></a><a class="social-icon" href="mailto:1941686805@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">在这里记录自己学习的点点滴滴，希望和大家一起成长~欢迎分享交流哇！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%9E%8D%E5%90%88"><span class="toc-text">模型融合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%A0%B7%E6%80%A7"><span class="toc-text">1. 构建多样性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E7%89%B9%E5%BE%81%E5%A4%9A%E6%A0%B7%E6%80%A7"><span class="toc-text">1.1 特征多样性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E6%A0%B7%E6%9C%AC%E5%A4%9A%E6%A0%B7%E6%80%A7"><span class="toc-text">1.2 样本多样性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E6%A8%A1%E5%9E%8B%E5%A4%9A%E6%A0%B7%E6%80%A7"><span class="toc-text">1.3 模型多样性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E8%9E%8D%E5%90%88"><span class="toc-text">2. 训练过程融合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%AD%E7%BB%83%E7%BB%93%E6%9E%9C%E8%9E%8D%E5%90%88"><span class="toc-text">3. 训练结果融合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E5%8A%A0%E6%9D%83%E6%B3%95"><span class="toc-text">3.1 加权法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-Stacking%E8%9E%8D%E5%90%88"><span class="toc-text">3.2 Stacking融合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-Blending%E8%9E%8D%E5%90%88"><span class="toc-text">3.3 Blending融合</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/08/Git-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/" title="Git-远程仓库"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/31/75c3fd05a3a3a095f6aa8a79d0720676-image-20220331174845354-4f3399.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git-远程仓库"/></a><div class="content"><a class="title" href="/2022/04/08/Git-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/" title="Git-远程仓库">Git-远程仓库</a><time datetime="2022-04-08T07:48:37.891Z" title="发表于 2022-04-08 15:48:37">2022-04-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/07/Competition10-%E5%85%A8%E7%90%83%E5%9F%8E%E5%B8%82%E8%AE%A1%E7%AE%97AI%E6%8C%91%E6%88%98%E8%B5%9B/" title="Competition10-全球城市计算AI挑战赛"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e24723f0956f7819c9bf479295b501f7-RB7X0Q5te6s-86a933.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Competition10-全球城市计算AI挑战赛"/></a><div class="content"><a class="title" href="/2022/04/07/Competition10-%E5%85%A8%E7%90%83%E5%9F%8E%E5%B8%82%E8%AE%A1%E7%AE%97AI%E6%8C%91%E6%88%98%E8%B5%9B/" title="Competition10-全球城市计算AI挑战赛">Competition10-全球城市计算AI挑战赛</a><time datetime="2022-04-07T07:25:36.290Z" title="发表于 2022-04-07 15:25:36">2022-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/06/Git-%E6%97%B6%E5%85%89%E6%9C%BA%E7%A9%BF%E6%A2%AD/" title="Git-时光机穿梭"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/31/75c3fd05a3a3a095f6aa8a79d0720676-image-20220331174845354-4f3399.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git-时光机穿梭"/></a><div class="content"><a class="title" href="/2022/04/06/Git-%E6%97%B6%E5%85%89%E6%9C%BA%E7%A9%BF%E6%A2%AD/" title="Git-时光机穿梭">Git-时光机穿梭</a><time datetime="2022-04-06T10:14:39.924Z" title="发表于 2022-04-06 18:14:39">2022-04-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/06/Latex%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E9%9B%86%E5%90%88/" title="Latex常用公式集合"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/04/06/c1417d854e47ac376731d98168bb5a26-image-20220406144003254-181b6d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Latex常用公式集合"/></a><div class="content"><a class="title" href="/2022/04/06/Latex%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F%E9%9B%86%E5%90%88/" title="Latex常用公式集合">Latex常用公式集合</a><time datetime="2022-04-06T06:40:27.335Z" title="发表于 2022-04-06 14:40:27">2022-04-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/04/LC-257.-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84/" title="LC-257. 二叉树的所有路径"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/21/dae18aaed7ba285365dfc66efc93c0b2-614c4ad81befc-a6dbfe.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LC-257. 二叉树的所有路径"/></a><div class="content"><a class="title" href="/2022/04/04/LC-257.-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84/" title="LC-257. 二叉树的所有路径">LC-257. 二叉树的所有路径</a><time datetime="2022-04-04T06:43:25.367Z" title="发表于 2022-04-04 14:43:25">2022-04-04</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 By Wangzhiqiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎您的访问！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Algolia</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script id="click-show-text" src="/%5Bobject%20Object%5D" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="17px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
