@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-15T03:08:09.013Z</updated>
+  <updated>2022-04-15T08:01:20.816Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2022/04/15/%E4%BD%BF%E7%94%A8%E5%A4%96%E7%BD%91ip%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <id>http://example.com/2022/04/15/%E4%BD%BF%E7%94%A8%E5%A4%96%E7%BD%91ip%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
     <published>2022-04-15T03:04:51.944Z</published>
-    <updated>2022-04-15T03:08:09.013Z</updated>
+    <updated>2022-04-15T08:01:20.816Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="使用外网ip连接服务器">使用外网ip连接服务器</h2><h2 id="问题背景">问题背景</h2><p>实验室的服务器没有和和学校申请固定的外网 <code>ip</code> ，导致在服务器使用ppp拨号连接互联网的时候，即使连接了学校里面的校园 <code>wifi</code> 依然无法连接到服务器，而在学校外卖连接VPN更是不行，只能通过连接网线的方式使用。这是很痛苦的事情，因为不连互联网就无法下载包，连接了就连接不到网络。就在刚刚突然想起来一个方法，可以暂时解决和这个问题。</p><p>解决方案：</p><p>直接连接服务器的外网 <code>ip</code></p><p>输入命令 <code>ifconfig</code>，找到ppp，如图，然后就可以使用wifi连接了。</p><p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/04/15/297cf9d6188d23a822573885da3e300f-image-20220415110246270-115cc5.png" alt="image-20220415110246270"></p><h2 id="缺点：">缺点：</h2><ul><li>外网 <code>ip</code> 可能不稳定，有可能因为关机等问题发生改变；</li><li>还没有尝试校外VPN是否有效，但是理论上应该可以；</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="使用外网ip连接服务器">使用外网ip连接服务器</h2><h2 id="问题背景">问题背景</h2><p>实验室的服务器没有和和学校申请固定的外网 <code>ip</code> ，导致在服务器使用ppp拨号连接互联网的时候，即使连接了学校里面的校园 <code>wifi</code> 依然无法连接到服务器，而在学校外面连接VPN更是不行，只能通过连接网线的方式使用。这是很痛苦的事情，因为不连互联网就无法下载包，连接了就连接不到网络。就在刚刚突然想起来一个方法，可以暂时解决和这个问题。</p><p>解决方案：</p><p>直接连接服务器的外网 <code>ip</code></p><p>输入命令 <code>ifconfig</code>，找到ppp，如图，然后就可以使用wifi连接了。</p><p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/04/15/297cf9d6188d23a822573885da3e300f-image-20220415110246270-115cc5.png" alt="image-20220415110246270"></p><h2 id="缺点：">缺点：</h2><ul><li>外网 <code>ip</code> 可能不稳定，有可能因为关机等问题发生改变；</li><li>还没有尝试校外VPN是否有效，但是理论上应该可以；</li></ul>]]></content>
     
     
       
