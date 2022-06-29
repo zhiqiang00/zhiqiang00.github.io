@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Distilling the Knowledge in a Neural Network | hahahaha哈士奇</title><meta name="keywords" content="对比学习,知识蒸馏"><meta name="author" content="Wangzhiqiang,1941686805@qq.com"><meta name="copyright" content="Wangzhiqiang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Distilling the Knowledge in a Neural Network 摘要 提高几乎所有机器学习算法性能的一个非常简单的方法是，在相同的数据上训练许多不同的模型，然后对它们的预测进行平均。不幸的是，使用整个模型集合进行预测是很麻烦的，而且可能由于计算成本太高而无法部署到大量用户，特别是在单个模型是大型神经网络的情况下。Caruana和他的合作者[1]已经证明，可以将集合中的知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Distilling the Knowledge in a Neural Network">
+<meta property="og:url" content="http://example.com/2022/06/29/Paper-[arXiv%202020]-Distilling%20the%20Knowledge%20in%20a%20Neural%20Network/index.html">
+<meta property="og:site_name" content="hahahaha哈士奇">
+<meta property="og:description" content="Distilling the Knowledge in a Neural Network 摘要 提高几乎所有机器学习算法性能的一个非常简单的方法是，在相同的数据上训练许多不同的模型，然后对它们的预测进行平均。不幸的是，使用整个模型集合进行预测是很麻烦的，而且可能由于计算成本太高而无法部署到大量用户，特别是在单个模型是大型神经网络的情况下。Caruana和他的合作者[1]已经证明，可以将集合中的知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg">
+<meta property="article:published_time" content="2022-06-29T13:55:13.823Z">
+<meta property="article:modified_time" content="2022-06-29T13:48:44.329Z">
+<meta property="article:author" content="Wangzhiqiang">
+<meta property="article:tag" content="对比学习">
+<meta property="article:tag" content="知识蒸馏">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg"><link rel="shortcut icon" href="/img/2.png"><link rel="canonical" href="http://example.com/2022/06/29/Paper-[arXiv%202020]-Distilling%20the%20Knowledge%20in%20a%20Neural%20Network/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"7YPRNTZSD2","apiKey":"09830cc4fa08aac22c5aaefcda4871be","indexName":"myIndex","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":350},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Distilling the Knowledge in a Neural Network',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-29 21:48:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="hahahaha哈士奇" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/1f2e377def5c6672de0cdeed4b54c36d-201672716495120191-a103ac.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">hahahaha哈士奇</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Distilling the Knowledge in a Neural Network</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-29T13:55:13.823Z" title="发表于 2022-06-29 21:55:13">2022-06-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-29T13:48:44.329Z" title="更新于 2022-06-29 21:48:44">2022-06-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Distilling the Knowledge in a Neural Network"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Distilling-the-Knowledge-in-a-Neural-Network">Distilling the Knowledge in a Neural Network</h2>
+<h2 id="摘要-7">摘要</h2>
+<p>提高几乎所有机器学习算法性能的一个非常简单的方法是，在相同的数据上训练许多不同的模型，然后对它们的预测进行平均。不幸的是，使用整个模型集合进行预测是很麻烦的，而且可能由于计算成本太高而无法部署到大量用户，特别是在单个模型是大型神经网络的情况下。Caruana和他的合作者[1]已经证明，可以将集合中的知识压缩到一个单一的模型中，这更容易部署，我们使用一种不同的压缩技术进一步开发了这种方法。</p>
+<p>引入了一种新的集成类型，由一个或多个完整模型和许多专家模型组成，这些专家模型学习区分完整模型混淆的细粒度类。与混合专家不同，这些专家模型可以快速、并行地训练。</p>
+<h2 id="1-介绍-6">1 介绍</h2>
+<p>在大规模机器学习中，我们通常在训练阶段和部署阶段使用非常相似的模型，进行他们的要求是不同的：对于像语音和物体识别这样的任务，训练必须从非常大的、高冗余的数据集中提取结构，但它不需要实时操作，并且可以使用大量的计算量。**但是，部署到大量用户时，对延迟和计算资源的要求要严格得多。**与昆虫的类比表明，<strong>如果能更容易地从数据中提取结构，我们应该愿意训练非常繁琐的模型</strong>。繁琐的模型可以是单独训练的模型的集合，也可以是使用非常强的正则化器(如dropout[9])训练的单个非常大的模型。**一旦训练了繁琐的模型，我们就可以使用另一种训练，我们称之为“蒸馏”，将知识从繁琐的模型转移到更适合部署的小模型上。**在他们的重要论文中，他们令人信服地证明了，由大量模型集合获得的知识可以转移到单个小模型上。</p>
+<p>一个可能阻碍对这种非常有前途的方法进行更多研究的概念块是，我们倾向于用学习到的参数值来识别训练模型中的知识，这使得我们很难看到我们如何改变模型的形式，但保持相同的知识。知识的一个更抽象的观点是，它从任何特定的实例化中解放出来，它是一个从输入向量到输出向量的学习映射。对于学习在大量类之间区分的笨重模型，正常的训练目标是最大化正确答案的平均对数概率，但学习的一个副作用是，训练的模型分配给所有错误答案的概率，即使这些概率非常小，其中一些比其他的大得多。错误答案的相对概率告诉我们很多关于这个繁琐的模型是如何一般化的。例如，一辆宝马的图像可能只有很小的几率被误认为是垃圾车，但这个错误仍然比把它误认为是胡萝卜的可能性大很多倍。【也就是说，对于错误识别的情况整体概率比较小，但是在错误的分类概率中，却相差很大】</p>
+<p>一般认为，用于训练的目标函数应尽可能接近地反映使用者的真实目标。尽管如此，当真正的目标是很好地推广到新数据时，通常会训练模型来优化训练数据的性能【就是训练的时候需要考虑泛化性，否则只尽可能考虑接近真实目标会存在过拟合的风险】。训练模型很好地进行泛化显然更好，但这需要关于正确的归纳方法的信息，而这些信息通常是不可获得的。然而，当我们从一个大模型中提取知识到一个小模型时，<strong>我们可以训练小模型以与大模型相同的方式进行归泛化训练？？？</strong>。如果这个笨重的模型能够很好地泛化，因为，例如，它是一个不同模型的大型集合的平均值，那么用同样的方法训练的一个小模型在测试数据上的泛化效果通常会比用正常的方法训练的小模型在用于训练集合的同一训练集上的效果要好得多。</p>
+<p>将复杂模型的泛化能力转移到小模型的一种明显方法是使用复杂模型产生的类概率作为训练小模型的“软目标”。对于这个转移阶段，我们可以使用相同的训练集或单独的“转移”集。当复杂的模型是简单模型的大集合时，我们可以使用它们各自预测分布的算术或几何平均值作为软目标。当软目标具有较高的熵值时，它们提供的每个训练案例的信息量比硬目标要大得多，训练案例之间的梯度方差也要小得多，因此小模型通常可以在更少的数据上训练，使用更高的学习率【这也解释了为什么有一些比赛方案会把label的取一个log，这应该算是目标软化的过程】。</p>
+<p>对于像MNIST这样的任务，复杂的模型几乎总是以非常高的置信度产生正确的答案，学习函数的很多信息都存在于软目标中非常小的概率的比率中。例如，一个版本的2的图片可能有10 - 6的概率是3,10 - 9的概率是7，而对于另一个版本，可能是反过来的。<strong>这是有价值的信息，它定义了数据上丰富的相似结构(即，它说哪个2看起来像3，哪个看起来像7)，但它对传递阶段的交叉熵代价函数影响很小，因为概率如此接近于零。</strong></p>
+<p>Caruana和他的合作者通过使用logits(最终softmax的输入)而不是softmax产生的概率作为学习小模型的目标来规避这个问题，他们最小化了繁琐模型产生的logits和小模型产生的logits之间的平方差。我们更通用的解决方案，称为“蒸馏”，是提高最终softmax的温度，直到笨重的模型产生合适的软目标集。然后我们在训练小模型时使用同样的高温来匹配这些软目标。我们稍后将说明，对繁琐模型的对数进行匹配实际上是蒸馏的一种特殊情况。</p>
+<p>用于训练小模型的传输集可以完全由未标记的数据[1]组成，或者我们可以使用原始的训练集。我们发现使用原始的训练集效果很好，特别是如果我们在目标函数中加入一个小项，鼓励小模型预测真实目标，同时匹配繁琐的模型提供的软目标。</p>
+<p>通常情况下，小模型不能完全匹配软目标，在正确答案的方向上出错是有益的。</p>
+<h2 id="2-Distillation-蒸馏">2 Distillation(蒸馏)</h2>
+<p>神经网络通常通过使用“softmax”输出层生成类概率，将每个类的logit zi转换为概率qi。</p>
+<p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/06/29/5f37a1950992236b1ffc4ffe69f7b9a8-image-20220629191505576-8cd380.png" alt="image-20220629191505576"></p>
+<p>其中T是通常设为1的温度。使用较高的T值在类中产生较软的概率分布。</p>
+<p>在最简单的蒸馏形式中，知识通过在一个转移集上进行训练转移到distilled model上的，在转移集中使用软目标分布，这个分布这个软目标分布是在其softmax中使用高温的复杂模型产生的。训练蒸馏模型时使用相同的高温，但训练后使用的温度为1。</p>
+<p>当所有或部分传输集都知道正确的标签时，还可以训练蒸馏模型生成正确的标签，从而显著改进该方法。一种方法是使用正确的标签来修改软目标，但我们发现更好的方法是简单地使用两个不同目标函数的加权平均。第一个目标函数是软目标的交叉熵，该交叉熵的计算方法与从繁琐的模型生成软目标时使用的相同，即使用蒸馏模型的softmax中的高温。第二个目标函数是带有正确标签的交叉熵。这是在蒸馏模型的softmax中使用完全相同的对数，但温度为1。我们发现，最好的结果通常是使用一个相当低的权重对第二个目标函数。由于软目标产生的梯度大小为1/ t2，因此在使用硬目标和软目标时，将它们乘以t2是很重要的。这确保了在使用元参数进行实验时，如果改变蒸馏所用的温度，硬靶和软靶的相对贡献大致保持不变。</p>
+<h3 id="2-1-Matching-logits-is-a-special-case-of-distillation-匹配对数是蒸馏的一个特例">2.1 Matching logits is a special case of distillation 匹配对数是蒸馏的一个特例</h3>
+<p>在转移集中的每一种情况都贡献了一个交叉熵梯度，dC/dzi，相对于蒸馏模型的每个logit, zi。如果繁琐的模型有logits vi，产生软目标概率pi，并且转移训练是在温度T下进行的，这个梯度由:</p>
+<p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/06/29/14fb0293512b560cc4f2635afccc5ec3-image-20220629194529276-0c8ca0.png" alt="image-20220629194529276"></p>
+<p>如果温度比对数的量级高，我们可以近似地:</p>
+<p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/06/29/7051fd7f3165e06c8d03afcebd058bd0-image-20220629194705849-645695.png" alt="image-20220629194705849"></p>
+<p>所以在高温极限下，蒸馏等价于最小化1/2(zi−vi)2，前提是每个转移情况下的对数都是零。在较低的温度下，蒸馏很少注意匹配比平均值负得多的对数。这是潜在的优势，因为这些对数几乎完全不受用于训练繁琐模型的代价函数的限制，因此它们可能非常嘈杂。另一方面，非常负的对数可能会传递由繁琐的模型获得的知识的有用信息。这些效应中哪一个占主导地位是一个经验问题。我们表明，当<strong>蒸馏模型太小，无法捕捉繁琐模型中的所有知识时，中间温度是最好的，这强烈表明忽略大的负对数是有帮助的</strong>。</p>
+<h2 id="3-Preliminary-experiments-on-MNIST-MNIST的初步实验">3 Preliminary experiments on MNIST MNIST的初步实验</h2>
+<p>为了了解蒸馏工作的效果如何，我们在所有60000个训练案例上训练了一个具有两个隐藏层的大型神经网络，该隐藏层包含1200个经过修正的线性隐藏单元。如[5]中所述，使用dropout和weight约束对网进行了强正则化。Dropout可以被视为一种训练共享权重的指数级模型集合的方法。此外，输入图像在任何方向上都有最多两个像素的抖动。这个网络实现了67个测试错误，而一个较小的网络，两个隐藏层800矫正线性隐藏单元，没有正则化实现了146个错误。</p>
+<p>当蒸馏网的两个隐藏层中各有300个或更多的单元时，所有温度高于8的结果都相当相似。但当这一数字大幅降低到每层30个单位时，2.5到4的温度范围内的工作效果明显优于更高或更低的温度。</p>
+<p>然后我们试着省略所有数字3的例子。所以从蒸馏模型的角度来看，3是一个从未见过的神话数字。尽管如此，蒸馏模型只产生206个测试错误，其中133个错误位于测试集中的1010个3上。大部分的错误是由于3类的习得偏差太低。如果这个偏差增加3.5(这优化了测试集的整体性能)，蒸馏模型产生109个错误，其中14个错误在3。因此，在正确的偏差下，蒸馏模型得到了98.6%的测试3的正确率，尽管在训练中从未见过3。</p>
+<p>如果转移集只包含训练集的7s和8s，蒸馏模型的测试误差为47.3%，但当对7和8的偏差降低7.6以优化测试性能时，这一测试误差下降到13.2%。</p>
+<h2 id="4-Experiments-on-speech-recognition-语音识别实验">4 Experiments on speech recognition 语音识别实验</h2>
+<h3 id="4-1-Results">4.1 Results</h3>
+<h2 id="5-Training-ensembles-of-specialists-on-very-big-datasets">5 Training ensembles of specialists on very big datasets</h2>
+<p>训练模型的集合是利用并行计算的一种非常简单的方法</p>
+<ul>
+<li>而集合在测试时需要太多的计算这一常见的反对意见可以通过使用精馏来处理。</li>
+<li>然而，对于集成还有另一个重要的反对意见:如果单个模型是大型神经网络，并且数据集非常大，那么在训练时所需的计算量是过多的，尽管它很容易并行化。</li>
+</ul>
+<p>在本节中，我们将给出这样一个数据集的示例，并展示学习专家模型(每个专注于类的不同可混淆子集)如何减少学习集成所需的总计算量。专注于细粒度区分的专家的主要问题是，他们很容易过拟合，我们描述了如何使用软目标来防止这种过拟合。</p>
+<h3 id="5-1-The-JFT-dataset">5.1 The JFT dataset</h3>
+<h3 id="5-2-Specialist-Models">5.2 Specialist Models</h3>
+<p>当类的数量非常大时，将繁琐的模型作为一个集合是有意义的，它包含一个基于所有数据训练的全能型模型和许多“专家”模型，其中每个模型都由来自非常容易混淆的类子集(如不同类型的蘑菇)的示例中高度丰富的数据训练。这类专家的softmax可以通过将它不关心的所有类合并到一个垃圾箱类中来变得更小。</p>
+<p>为了减少过拟合，分担低级特征检测器的学习工作，每个专业模型都使用通才模型的权值进行初始化。然后，通过训练专家来略微修改这些权重，其中一半的示例来自其特殊子集，另一半则从训练集的其余部分随机抽样。训练结束后，我们可以通过(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>i</mi><msub><mi>t</mi><mtext>垃圾桶类</mtext></msub><mo>×</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mtext>专家类被过采样比例</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">logit_{垃圾桶类} \times \log(专家类被过采样比例)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">垃圾桶类</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord cjk_fallback">专家类被过采样比例</span><span class="mclose">)</span></span></span></span>)来校正有偏差的训练集。</p>
+<h3 id="5-3-Assigning-classes-to-specialists">5.3 Assigning classes to specialists</h3>
+<p>为了为专家提供对象类别的分组，我们决定专注于我们的整个网络经常混淆的类别。尽管我们可以计算混淆矩阵并使用它来找到这样的集群，但我们选择了一种更简单的方法，不需要真正的标签来构建集群。</p>
+<p>特别地，我们对我们的通才模型的预测的协方差矩阵应用了一种聚类算法，因此一组经常被一起预测的类Sm将被用作我们的一个专家模型m的目标。我们对协方差矩阵的列应用了一个在线版本的K-means算法，得到了合理的聚类(如表2所示)。我们尝试了几种聚类算法，产生了类似的结果</p>
+<h3 id="5-4-Performing-inference-with-ensembles-of-specialists-利用专家集合进行推理">5.4 Performing inference with ensembles of specialists 利用专家集合进行推理</h3>
+<p>在研究提取专家模型时发生的情况之前，我们想看看包含专家的集合的表现如何。除了专家模型之外，我们总是有一个多面手模型，这样我们就可以处理那些没有专家的类，这样我们就可以决定使用哪些专家。给定一个输入图像x，我们分两步进行上面的分类:</p>
+<p>步骤1:对于每个测试用例，我们根据全面模型找到n个最可能的类。将这个类集合称为k。在我们的实验中，我们使用n = 1。</p>
+<p>步骤2:然后我们取所有的专家模型m，它的可混淆类的特殊子集<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>S</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">S^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span>，与k有一个非空的交集，并称之为活跃的专家集合<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">A_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>(注意这个集合可能是空的)。然后我们找到所有类中完整概率分布q使下面的公式最小:</p>
+<p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/06/29/b83b81afe49c3e6df9e353d696ecd184-image-20220629212314790-6eb6cf.png" alt="image-20220629212314790"></p>
+<p>分布<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>p</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">p^m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8588em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span></span></span></span>是所有专业类<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>加上一个垃圾箱类的分布，所以当计算其与全q分布的KL散度时，我们将 full q分布分配给专业类<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>的垃圾箱中所有类的所有概率 相加。</p>
+<h3 id="5-5-Results">5.5 Results</h3>
+<p>从训练的基线全网络开始，专家们训练得非常快(JFT仅需几天，而不是很多周)。此外，所有的专家都是完全独立训练的。表3显示了基准系统和基准系统结合专家模型的绝对测试精度。61个专业模型，整体测试精度相对提高4.4%。我们还报告了条件测试的准确性，这是通过只考虑属于专家类的例子，并将我们的预测限制在类的子集的准确性。</p>
+<p>对于我们的JFT专业实验，我们训练了61个专业模型，每个模型有300个类(加上垃圾箱类)。因为专家的类集不是不相交的，所以我们经常有多个专家来覆盖一个特定的图像类。表4显示了测试集示例的数量，当使用专家时，在位置1上正确的示例数量的变化，以及由覆盖类的专家数量分解的JFT数据集top1准确率的相对百分比提高。当我们有更多的专家覆盖一个特定的类时，准确率的提高会更大，这一总体趋势让我们感到鼓舞，因为训练独立的专家模型非常容易并行化。</p>
+<h2 id="6-Soft-Targets-as-Regularizers">6 Soft Targets as Regularizers</h2>
+<p>我们使用软目标而不是硬目标的主要主张之一是，软目标中可以携带大量有用的信息，而单个硬目标不可能对这些信息进行编码。在本节中，我们通过使用更少的数据来匹配前面描述的基准语音模型的85M参数，来证明这是一个非常大的影响。表5显示，在只有3%的数据(大约20M的例子)的情况下，用硬目标训练基线模型会导致严重的过拟合(我们做了早期停止，因为精度在达到44.5%后急剧下降)，而用软目标训练的相同模型能够恢复几乎所有的完整训练集中的信息(大约差2%)。更值得注意的是，我们并不需要提前停止:具有软目标的系统只是简单地“收敛”到57%。这表明，软目标是一种非常有效的方式，可以将基于所有数据进行训练的模型发现的规律传递给另一个模型。</p>
+<p><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/06/29/2e8db5be682a0c0120a4afe5b555db09-image-20220629213706221-839998.png" alt="image-20220629213706221"></p>
+<h3 id="6-1-Using-soft-targets-to-prevent-specialists-from-overfitting-利用软目标防止专家过拟合">6.1 Using soft targets to prevent specialists from overfitting 利用软目标防止专家过拟合</h3>
+<p>我们在JFT数据集上的实验中使用的专家类将所有非专业类分解到一个垃圾箱类中。如果我们允许专家在所有职业上拥有完整的softmax，那么可能会有比使用早期停止更好的方法来防止他们过度拟合。专家接受的训练是关于特殊类别中高度丰富的数据。这意味着其训练集的有效大小要小得多，并且对其特殊类有很强的过拟合倾向。这个问题不能通过缩小专家类来解决，因为那样我们就失去了对所有非专家类建模所得到的非常有用的转移效果。</p>
+<p>我们使用3%的语音数据进行的实验表明，如果用多面手的权重初始化一个专家，除了用硬目标进行训练外，我们还可以用软目标对非特殊类进行训练，使其几乎保留所有关于非特殊类的知识。软目标可以由多面手提供。我们目前正在探索这种方法</p>
+<h2 id="7-Relationship-to-Mixtures-of-Experts-与专家混合的关系">7 Relationship to Mixtures of Experts 与专家混合的关系</h2>
+<p>在数据子集上训练的专家的使用与专家[6]的混合使用有一些相似之处，[6]使用一个门控网络来计算将每个示例分配给每个专家的概率。在专家学习处理分配给他们的例子的同时，门控网络正在学习根据专家对例子的相对区别性表现来选择将每个例子分配给哪个专家。利用专家的判别性能来确定学习到的分配比简单地将输入向量聚类并为每个聚类分配一个专家要好得多，但这会使训练难以并行化:首先，每个专家的加权训练集不断变化，且变化的方式依赖于所有其他专家;其次，门控网络需要比较不同专家在同一个例子上的表现，以知道如何修改其分配概率。这些困难意味着专家的混合很少被用于他们可能最有益的领域:具有包含明显不同子集的巨大数据集的任务。</p>
+<p>并行地培训多个专家要容易得多。我们首先训练一个多面手模型，然后使用混淆矩阵来定义专家训练的子集。一旦定义了这些子集，就可以完全独立地训练专家。在测试时，我们可以使用来自多面手模型的预测来决定哪些专家是相关的，并且只有这些专家需要运行。</p>
+<h2 id="8-Discussion">8 Discussion</h2>
+<p>我们已经证明，在将知识从一个集合或从一个大型的高度正则化模型转移到一个较小的蒸馏模型时，蒸馏非常有效。在MNIST上，即使用于训练蒸馏模型的传输集缺乏一个或多个类的示例，蒸馏也能非常好地工作。对于一个Android语音搜索使用的深度声学模型，我们已经展示了几乎所有通过训练深度神经网络集成实现的改进都可以提炼成一个相同大小的单一神经网络，这更容易部署。</p>
+<p>对于真正的大型神经网络，即使是训练一个完整的集合也是不可行的，但我们已经证明，通过学习大量的专业网络，每个专业网络都可以学习在高度易混淆的集群中区分类别，从而显著提高单个真正的大型网络的性能。我们还没有证明我们可以将专家的知识提取回单一的大网中。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1941686805@qq.com">Wangzhiqiang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/29/Paper-[arXiv%202020]-Distilling%20the%20Knowledge%20in%20a%20Neural%20Network/">http://example.com/2022/06/29/Paper-[arXiv%202020]-Distilling%20the%20Knowledge%20in%20a%20Neural%20Network/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">hahahaha哈士奇</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/">对比学习</a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">知识蒸馏</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e10b5ee4c740dbc358231b386ec0ce88-image-20220320190054218-938bb2.png" target="_blank"><img class="post-qr-code-img" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/e10b5ee4c740dbc358231b386ec0ce88-image-20220320190054218-938bb2.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/2f304c57c620209d44ba0b66e099c092-image-20220320190039458-2fb3a9.png" target="_blank"><img class="post-qr-code-img" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/2f304c57c620209d44ba0b66e099c092-image-20220320190039458-2fb3a9.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/29/Paper-%5BICLR%202019%5D-Deep-Graph-Infomax/"><img class="prev-cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Paper-Deep-Graph-Infomax</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/17/LC-450%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/"><img class="next-cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/21/dae18aaed7ba285365dfc66efc93c0b2-614c4ad81befc-a6dbfe.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">LC-450删除二叉搜索树中的节点.md</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/29/Paper-%5BICLR%202020%5D-CONTRASTIVE%20REPRESENTATION%20DISTILLATION/" title="CONTRASTIVE REPRESENTATION DISTILLATION"><img class="cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-29</div><div class="title">CONTRASTIVE REPRESENTATION DISTILLATION</div></div></a></div><div><a href="/2022/06/29/Paper-%5BICLR%202019%5D-Deep-Graph-Infomax/" title="Paper-Deep-Graph-Infomax"><img class="cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-29</div><div class="title">Paper-Deep-Graph-Infomax</div></div></a></div><div><a href="/2022/03/31/Paper-%5BICML%202020%5D-A-Simple-Framework-for-Contrastive-Learning-of-Visual-Representations/" title="Paper-SimCLR A Simple Framework for Contrastive Learning of Visual Representations"><img class="cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-31</div><div class="title">Paper-SimCLR A Simple Framework for Contrastive Learning of Visual Representations</div></div></a></div><div><a href="/2022/04/21/Paper-%5BWWW%2022%5D-SimGRACEA%20Simple%20Framework%20for%20Graph%20Contrastive%20Learning%20without%20Data%20Augmentation/" title="Paper SimGRACE A Simple Framework for Graph Contrastive Learning without Data Augmentation(WWW22)"><img class="cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-21</div><div class="title">Paper SimGRACE A Simple Framework for Graph Contrastive Learning without Data Augmentation(WWW22)</div></div></a></div><div><a href="/2022/06/29/Paper-A-Simple-Framework-for-Contrastive-Learning-of-Visual-Representations/" title="Paper-A Simple Framework for Contrastive Learning of Visual Representations"><img class="cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-29</div><div class="title">Paper-A Simple Framework for Contrastive Learning of Visual Representations</div></div></a></div><div><a href="/2022/06/29/Paper-Deep-Graph-Infomax/" title="Paper-Deep-Graph-Infomax"><img class="cover" src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-29</div><div class="title">Paper-Deep-Graph-Infomax</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NDcwMi8zMTE3Mw=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/1f2e377def5c6672de0cdeed4b54c36d-201672716495120191-a103ac.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Wangzhiqiang</div><div class="author-info__description">一只在路上的哈士奇</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zhiqiang00"><i class="fab fa-github"></i><span>关注我吧~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zhiqiang00" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://leetcode-cn.com/u/wang-zhi-qiang-o/" target="_blank" title="LeetCode"><i class="fas fa-duotone fa-code"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_43351000?type=blog" target="_blank" title="CSDN"><i class="iconfont icon-csdn1"></i></a><a class="social-icon" href="mailto:1941686805@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">在这里记录自己学习的点点滴滴，希望和大家一起成长~欢迎分享交流哇！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Distilling-the-Knowledge-in-a-Neural-Network"><span class="toc-text">Distilling the Knowledge in a Neural Network</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81-7"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D-6"><span class="toc-text">1 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Distillation-%E8%92%B8%E9%A6%8F"><span class="toc-text">2 Distillation(蒸馏)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Matching-logits-is-a-special-case-of-distillation-%E5%8C%B9%E9%85%8D%E5%AF%B9%E6%95%B0%E6%98%AF%E8%92%B8%E9%A6%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E7%89%B9%E4%BE%8B"><span class="toc-text">2.1 Matching logits is a special case of distillation 匹配对数是蒸馏的一个特例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Preliminary-experiments-on-MNIST-MNIST%E7%9A%84%E5%88%9D%E6%AD%A5%E5%AE%9E%E9%AA%8C"><span class="toc-text">3 Preliminary experiments on MNIST MNIST的初步实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Experiments-on-speech-recognition-%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E5%AE%9E%E9%AA%8C"><span class="toc-text">4 Experiments on speech recognition 语音识别实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Results"><span class="toc-text">4.1 Results</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Training-ensembles-of-specialists-on-very-big-datasets"><span class="toc-text">5 Training ensembles of specialists on very big datasets</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-The-JFT-dataset"><span class="toc-text">5.1 The JFT dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Specialist-Models"><span class="toc-text">5.2 Specialist Models</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-Assigning-classes-to-specialists"><span class="toc-text">5.3 Assigning classes to specialists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-Performing-inference-with-ensembles-of-specialists-%E5%88%A9%E7%94%A8%E4%B8%93%E5%AE%B6%E9%9B%86%E5%90%88%E8%BF%9B%E8%A1%8C%E6%8E%A8%E7%90%86"><span class="toc-text">5.4 Performing inference with ensembles of specialists 利用专家集合进行推理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-Results"><span class="toc-text">5.5 Results</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Soft-Targets-as-Regularizers"><span class="toc-text">6 Soft Targets as Regularizers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-Using-soft-targets-to-prevent-specialists-from-overfitting-%E5%88%A9%E7%94%A8%E8%BD%AF%E7%9B%AE%E6%A0%87%E9%98%B2%E6%AD%A2%E4%B8%93%E5%AE%B6%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-text">6.1 Using soft targets to prevent specialists from overfitting 利用软目标防止专家过拟合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Relationship-to-Mixtures-of-Experts-%E4%B8%8E%E4%B8%93%E5%AE%B6%E6%B7%B7%E5%90%88%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">7 Relationship to Mixtures of Experts 与专家混合的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Discussion"><span class="toc-text">8 Discussion</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Paper-Deep-Graph-Infomax/" title="Paper-Deep-Graph-Infomax"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Paper-Deep-Graph-Infomax"/></a><div class="content"><a class="title" href="/2022/06/29/Paper-Deep-Graph-Infomax/" title="Paper-Deep-Graph-Infomax">Paper-Deep-Graph-Infomax</a><time datetime="2022-06-29T14:06:55.394Z" title="发表于 2022-06-29 22:06:55">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Paper-A-Simple-Framework-for-Contrastive-Learning-of-Visual-Representations/" title="Paper-A Simple Framework for Contrastive Learning of Visual Representations"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Paper-A Simple Framework for Contrastive Learning of Visual Representations"/></a><div class="content"><a class="title" href="/2022/06/29/Paper-A-Simple-Framework-for-Contrastive-Learning-of-Visual-Representations/" title="Paper-A Simple Framework for Contrastive Learning of Visual Representations">Paper-A Simple Framework for Contrastive Learning of Visual Representations</a><time datetime="2022-06-29T14:06:55.393Z" title="发表于 2022-06-29 22:06:55">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/%E8%A7%A3%E5%86%B3typora%E5%9B%BE%E7%89%87%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/" title="解决typora图片丢失问题"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/08c72b270c54abbd8924e4c8888f7ee6-wFna77QtSi0-24c6d7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="解决typora图片丢失问题"/></a><div class="content"><a class="title" href="/2022/06/29/%E8%A7%A3%E5%86%B3typora%E5%9B%BE%E7%89%87%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/" title="解决typora图片丢失问题">解决typora图片丢失问题</a><time datetime="2022-06-29T13:55:13.878Z" title="发表于 2022-06-29 21:55:13">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Paper-%5BPMLR-20%5D-MVGRL-Contrastive-Multi-View-Representation-Learning-on-Graphs/" title="Paper-[PMLR 20]-Contrastive Multi-View Representation Learning on Graphs"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Paper-[PMLR 20]-Contrastive Multi-View Representation Learning on Graphs"/></a><div class="content"><a class="title" href="/2022/06/29/Paper-%5BPMLR-20%5D-MVGRL-Contrastive-Multi-View-Representation-Learning-on-Graphs/" title="Paper-[PMLR 20]-Contrastive Multi-View Representation Learning on Graphs">Paper-[PMLR 20]-Contrastive Multi-View Representation Learning on Graphs</a><time datetime="2022-06-29T13:55:13.868Z" title="发表于 2022-06-29 21:55:13">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Paper-%5BICLR%202020%5D-CONTRASTIVE%20REPRESENTATION%20DISTILLATION/" title="CONTRASTIVE REPRESENTATION DISTILLATION"><img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CONTRASTIVE REPRESENTATION DISTILLATION"/></a><div class="content"><a class="title" href="/2022/06/29/Paper-%5BICLR%202020%5D-CONTRASTIVE%20REPRESENTATION%20DISTILLATION/" title="CONTRASTIVE REPRESENTATION DISTILLATION">CONTRASTIVE REPRESENTATION DISTILLATION</a><time datetime="2022-06-29T13:55:13.853Z" title="发表于 2022-06-29 21:55:13">2022-06-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 By Wangzhiqiang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎您的访问！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Algolia</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script id="click-show-text" src="/%5Bobject%20Object%5D" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="17px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
