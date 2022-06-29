@@ -1,6 +1,5 @@
 ---
 title: Competition09-时间序列
-date: 2022年3月17日
 categories: [竞赛]
 tags: [特征工程，时间序列]
 katex: true

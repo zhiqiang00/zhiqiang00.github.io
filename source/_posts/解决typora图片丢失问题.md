@@ -61,10 +61,34 @@ picgo install github-plus
 ![image-20220317173725450](https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/17/40c886408bf1fd2aad6b06464e3afda6-image-20220317173725450-d97b7e.png)
 
 - 首先上传服务选择`PicGo-Core(command line)`
-
 - 打开配置文件，在打开的配置文件，添加相关信息
 
-![image-20220317205305847](https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/17/bb64a03f7029d2a0a269775e90baecf9-image-20220317205305847-40d155.png)
+```json
+{
+  "picBed": {
+    "uploader": "githubPlus",
+    "current": "githubPlus",
+    "githubPlus": {
+      "repo": "zhiqiang00/Picbed",
+      "branch": "main",
+      "token": "ghp_6UpTgRay*******************",
+      "path": "blog-images",
+      "curtomUrl": "",
+      "origin": "github"
+    }
+  },
+  "picgoPlugins": {
+    "picgo-plugin-github-plus": true,
+    "picgo-plugin-rename-file": true
+  },
+  "picgo-plugin-rename-file": {
+    "format": "{y}/{m}/{d}/{hash}-{origin}-{rand:6}"
+  },
+  "picgo-plugin-github-plus": {
+    "lastSync": "2022-06-27 07:33:56"
+  }
+}
+```
 
 ### 6. 测试
 
@@ -107,8 +131,6 @@ picgo install rename-file
 	"format": "{y}/{m}/{d}/{hash}-{origin}-{rand:6}"
 }
 ```
-
-
 
 **参考博客**
 

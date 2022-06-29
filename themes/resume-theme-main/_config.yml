@@ -1,0 +1,74 @@
+cdn:
+  # These base libraries cannot be deleted
+  jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
+  vue: https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js
+  # When these CDN resources are deleted, local resources are loaded.
+  common: https://cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-resume@1.0.0/source/js/common.js
+  escape: https://cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-resume@1.0.0/source/js/css.escape.js
+  smooth_scroll: https://cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-resume@1.0.0/source/js/smooth-scroll.min.js
+  # css: https://cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-resume@1.0.0/source/css/style.min.css
+  # Optional plug-in: image zoom
+  fancybox:
+    css: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5/dist/jquery.fancybox.min.css
+    js: https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5/dist/jquery.fancybox.min.js
+
+# robots meta tag
+robots: noindex,nofollow
+
+
+
+valine:   
+  appId: ***
+  appKey: ***
+  avatar: monsterid  
+  placeholder: 请在这里书写你想说的话~  
+  pageSize: 15
+  visitor: true
+
+
+
+# the footer of your site
+copyright: '<div style="text-algin:center;font-family: Times New Roman;" >
+ <br>
+        &copy; 2021
+        <a href="https://aeneag.xyz">犹念觏止</a>
+        <a href="http://beian.miit.gov.cn/" target="_blank">鲁ICP备19002502号-3</a><br/>
+<b>如果追忆会荡起涟漪，那么今天的秋红落叶和晴空万里都归你</b><br/>
+<b>除了努力，别无选择</b><br/>
+<b><span id="sitetime"></span><br/></b>
+ <b><span id="busuanzi_container_site_pv">本站访问量<span id="busuanzi_value_site_pv"></span>次</span><br/></b>
+<script language="javascript">
+        function siteTime(){
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+           
+            var t1 = Date.UTC(2021,11,11,00,00,00); //北京时间2019-1-1 00:00:00
+           
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+          
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="本站已勉强运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+
+        }
+        siteTime();
+    </script>
+       <b> <span class="footer__heart">❤️</span>
+        Theme ✨ Resume
+        Modified by <a href="https://github.com/lonuslan" target="_blank">DXin Xia</a> <br></b>
+    </div>'

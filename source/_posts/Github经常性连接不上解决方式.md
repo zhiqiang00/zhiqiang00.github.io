@@ -1,15 +1,12 @@
 ---
-title: 机器学习-集成学习
-date: 2022年3月12日
+title: Github经常性连接不上解决方式
 categories: [工具使用]
 tags: [Github]
 katex: true
 cover: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg
 top_img: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg
 ---
-# Github经常性连接不上解决方式
-
- 发表于 2021-03-17 更新于 2021-03-25 分类于 [教程](https://jxeditor.github.io/categories/教程/)
+## Github经常性连接不上解决方式
 
 > 平常开发经常性需要访问github代码,频繁连接不上github
 
