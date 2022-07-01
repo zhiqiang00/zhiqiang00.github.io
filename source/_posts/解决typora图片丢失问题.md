@@ -2,7 +2,7 @@
 title: 解决typora图片丢失问题
 date: 2022年3月14日
 categories: [工具使用]
-tags: [typora，Markdown, 图床]
+tags: [typora, Markdown, 图床]
 katex: true
 cover: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/08c72b270c54abbd8924e4c8888f7ee6-wFna77QtSi0-24c6d7.jpg
 top_img: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg

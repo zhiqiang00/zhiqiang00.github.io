@@ -2,7 +2,7 @@
 title: ML-集成学习
 date: 2022年3月12日
 categories: [机器学习]
-tags: [集成学习，随机森林, Boosting, Bagging]
+tags: [集成学习, 随机森林, Boosting, Bagging]
 katex: true
 cover: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/7f0f94f3ea0db706c233c4bcb413c046-XfMeXNI42d8-b472ff.jpg
 top_img: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/9d2244833e878e2169062087c9ab0874-wallhaven-g72p87-af7e51.jpg
