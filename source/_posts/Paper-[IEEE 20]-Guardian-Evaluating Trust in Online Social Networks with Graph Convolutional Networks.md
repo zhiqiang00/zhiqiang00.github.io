@@ -1,6 +1,6 @@
 ---
-title: Paper-Guardian-Evaluating Trust in Online Social Networks with Graph Convolutional Networks
-categories: [论文阅读]
+title: Paper-[IEEE 20]-Guardian-Evaluating Trust in Online Social Networks with Graph Convolutional Networks
+categories: [论文阅读, IEEE 20]
 tags: [信任评估, 图卷积网络]
 katex: true
 cover: https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/03/20/b36a188093daf2e64a217a84bf183201-nKO_1QyFh9o-2edcfd.jpg
