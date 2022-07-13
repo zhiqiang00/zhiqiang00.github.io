@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-06-29T14:31:49.319Z</updated>
+  <updated>2022-07-02T15:22:53.241Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Paper-[AAAI 21]-Augmentation-Free Self-Supervised Learning on Graphs</title>
+    <link href="http://example.com/2022/07/02/Paper-[AAAI-21]-Augmentation-Free-Self-Supervised-Learning-on-Graphs/"/>
+    <id>http://example.com/2022/07/02/Paper-[AAAI-21]-Augmentation-Free-Self-Supervised-Learning-on-Graphs/</id>
+    <published>2022-07-02T06:51:39.731Z</published>
+    <updated>2022-07-02T15:22:53.241Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Augmentation-Free-Self-Supervised-Learning-on-Graphs">Augmentation-Free Self-Supervised Learning on Graphs</h2><h2 id="摘要">摘要</h2><p>受最近成功应用于图像的自我监督方法的启发，图结构数据的自我监督学习得到了快速发展，尤其是以增强为基础的对比方法。然而，我们认为，如果没有精心设计的增广技术，图上的增广可能会表现得任意，因为图的底层语义可能会发生巨大的变化。</p><p>因此，现有的基于增广的方法的性能高度依赖于增广方案的选择，即与增广相关的超参数。本文提出了一种新的图的无增广自监督学习框架AFGRL。</p><p><strong>具体来说，我们通过发现与图共享局部结构信息和全局语义的节点来生成图的另一种视图。</strong></p><h2 id="1-介绍">1 介绍</h2><p>最近，自我监督学习范式，它从数据本身派生的监督信号中学习表示，而不依赖人类提供的标签，在包括计算机视觉在内的许多领域取得了巨大的成功。具体而言，作为自我监督学习范式的核心，对比方法旨在通过将语义上相似的(积极的)对拉到一起，并将不同的(消极的)对分开来建立有效的表征</p><p>尽管自我监督对比方法已被证明在各种与图相关的任务中是有效的，但它们很少注意图像和图之间的固有区别:**虽然增强在图像上有很好的定义，但它在图上的行为可能是任意的。**例如，在图像的情况下，即使随机裁剪和旋转它们，或扭曲它们的颜色，它们的潜在语义几乎没有变化(图1 (a))，即使语义变化，人类可以很容易地从视觉上识别变化，并选择另一种保留语义的增强方法。另一方面，当我们对图的边/节点及其特征进行扰动(删除或添加)时，我们无法确定增广图是否与原图正相关，更糟糕的是，由于图的形象化程度较低，验证增广图的有效性是非平凡的。</p><p>同样，在社交图中，随机drop的边也可能导致语义变化，特别是当这些边与中心节点相关时。例如，如图1©所示，如果Bob和Alice之间的边被删除，那么Bob到达Community 3(即从2跳到5跳)将需要更长的距离，这也改变了Community 1和Community 3之间的关系。我们认为这主要是因为图不仅包含语义信息，而且还包含结构信息。<img src="https://raw.githubusercontent.com/zhiqiang00/Picbed/main/blog-images/2022/07/02/e85a07f10180f83d98a60f48bf974ad0-image-20220702210907793-32b802.png" alt="image-20220702210907793"></p><p>**由于前面提到的图上增强的任意行为，学习到的以前基于增强的对比方法的图表示的质量高度依赖于增强方案的选择。更准确地说，为了增强图，这些方法执行各种增强技术，如节点/边缘扰动和节点特征掩蔽，图的增强量由一组超参数控制。**然而，这些超参数应该根据哪些数据集和哪些下游任务被用于模型评估而仔细调整，否则模型性能会有很大的变化(Y ou等人，2021年)。此外，研究还表明，<strong>对下游任务的表现高度依赖于增强技术的组合。</strong></p><p>此外，即使发现了增强的最佳超参数，由于固有的对比学习机制，另一个限制也出现了。更确切地说，继承了实例歧视原则，只要两个样本是同一实例的两个增强版本，对比方法就将它们视为正对，而其他所有对都视为负对。虽然这种方法对于学习图像表示是有效的，简单地将其应用到图中，将除节点本身外的所有其他节点都视为负数，从而忽略了图的结构信息，因此不能受益于图结构数据的关系归纳偏差。</p><p>最后，由于对比方法的性质，需要大量的负样本来提高下游任务的性能，这需要较高的计算和内存成本，在现实中是不切实际的。</p><h3 id="贡献"><strong>贡献</strong></h3><ul><li><p>我们提出了一个图的自监督学习框架，称为无增强图表示学习(AFGRL)，它既不需要增强技术也不需要负样本来学习图的表示。准确地说，我们不是任意创建一个图的两个增强视图并期望它们保留原始图的语义，而是使用原始图本身作为一个视图，<strong>并通过在表示空间中通过k-最近邻(k-NN)搜索发现原始图中的每个节点都可以作为正样本的节点，从而生成另一个视图。</strong></p><p>然后，给定两个语义相关的视图，我们的目标是预测第一个视图中的每个节点在第二个视图中其正节点的潜在表示。然而，基于k-NN搜索的天真地选择正样本来生成另一个视图仍然可以改变原始图的语义。</p></li><li><p>因此，我们引入了一种机制来过滤通过k-NN搜索发现的样本中的假阳性。简而言之，我们认为只有当1)它是邻接矩阵中目标节点的邻接节点(局部视角)，捕捉图结构数据中固有的关系归纳偏差，或2)它与目标节点属于同一簇(全局视角)，样本才为正。</p></li><li><p>此外，通过采用BYOL作为我们的模型的主干，模型训练不需要负样本，从而避免了“采样偏差”，即负样本可能与查询节点具有相同的语义，从而导致有效表示较低。</p></li></ul><p>我们的大量实验表明，AFGRL在节点分类、聚类和相似度搜索方面的性能优于各种最先进的方法。我们还证明，与严重依赖超参数选择的现有方法相比，AFGRL在超参数上是稳定的。据我们所知，<strong>AFGRL是第一个在不依赖手工增强技术和负样本的情况下学习图表示的工作</strong>。</p><h2 id="2-相关工作">2 相关工作</h2><h3 id="Contrastive-Methods-on-Graphs">Contrastive Methods on Graphs</h3><ul><li>近年来，由于自我监督方法在图像上的巨大成功，对比方法越来越多地被用于图形。DGI是深受Deep InfoMax 启发的开创性工作，旨在通过最大化图的局部patch即，节点和图的全局汇总之间的互信息来学习节点表示。从而捕捉到被普通图卷积网络忽略的图的全局信息。通过考虑边缘的互信息，DGI得到了进一步的改进和节点属性。</li><li>受SimCLR、GRACE的启发，首先通过随机扰动节点/边及其特征创建两个图的增强视图。然后，它通过将两个增强图中相同节点的表示拉进，而将其他所有节点的表示分开来学习节点表示。这一原则也被用于学习可用于图分类的图的图级表示等。尽管对比方法在图表上取得了成功，但它们因**“抽样偏差”**而受到批评。此外，<strong>这些方法需要大量的负样本进行模型训练，这导致了较高的计算和内存成本</strong>。</li><li>为了解决抽样偏差问题，BGRL在不使用负样本的情况下学习节点表示。它通过使用两个单独的编码器编码一个图的两个增强版本来学习节点表示:一个通过最小化两个编码器生成的表示之间的余弦损失来训练，而另一个编码器通过第一个编码器的指数移动平均来更新。虽然已经通过这种方式解决了抽样偏差，但BGRL仍然需要对原始图进行增强，这可能会导致语义漂移semantic drift，如图1所示。另一方面，我们提出的方法在不使用负样本或图的增广的情况下学习节点表示。</li></ul><h3 id="Augmentations-on-Graphs">Augmentations on Graphs</h3><p>最近，各种图的增强技术被引入。例如，节点删除，边改变，子图提取，属性mask。GRACE随机drop边缘和掩码节点特征，以生成一个图的两个增强视图。</p><p>GCA 通过引入兼顾结构和属性信息的高级自适应增强技术，进一步改进了GRACE。</p><p>然而，由于图的复杂性，在下游任务上的表现高度依赖于增强方案的选择，这将在我们后面的实验中显示(表1)。2020;Sun等人2021a)已经表明，对于图形，不存在普遍优秀的数据增强的方案。最后，Sun等人(2021a)证明，注入领域知识有助于找到适当的增强，它在分子图中保留了生物学假设。</p><p>然而，领域知识在现实中并不总是可用的。在这项工作中，我们提出了一个通用框架，用于生成原始图的另一种视图，而不依赖现有的增强技术，该技术可能会1)改变原始图的语义，或2)需要领域知识。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Augmentation-Free-Self-Supervised-Learning-on-Graphs&quot;&gt;Augmentation-Free Self-Supervised Learning on Graphs&lt;/h2&gt;
+&lt;h2 id=&quot;摘要&quot;&gt;摘要&lt;/h2&gt;
+</summary>
+      
+    
+    
+    
+    <category term="论文阅读" scheme="http://example.com/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+    <category term="AAAI21" scheme="http://example.com/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/AAAI21/"/>
+    
+    
+    <category term="对比学习" scheme="http://example.com/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>Paper-[JMLR 20]-A Simple Framework for Contrastive Learning of Visual Representations</title>
@@ -550,33 +578,6 @@ mac + clash&lt;/p&gt;</summary>
     <category term="二叉树" scheme="http://example.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
     <category term="递归" scheme="http://example.com/tags/%E9%80%92%E5%BD%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Competition10-全球城市计算AI挑战赛</title>
-    <link href="http://example.com/2022/04/13/Competition10-%E5%85%A8%E7%90%83%E5%9F%8E%E5%B8%82%E8%AE%A1%E7%AE%97AI%E6%8C%91%E6%88%98%E8%B5%9B/"/>
-    <id>http://example.com/2022/04/13/Competition10-%E5%85%A8%E7%90%83%E5%9F%8E%E5%B8%82%E8%AE%A1%E7%AE%97AI%E6%8C%91%E6%88%98%E8%B5%9B/</id>
-    <published>2022-04-13T08:09:01.614Z</published>
-    <updated>2022-04-15T02:25:47.297Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Competition10-全球城市计算AI挑战赛">Competition10-全球城市计算AI挑战赛</h2><h2 id="全球城市计算AI挑战赛">全球城市计算AI挑战赛</h2><h2 id="1-赛题理解">1 赛题理解</h2><h2 id="2-数据探索">2 数据探索</h2><h2 id="3-特征工程">3 特征工程</h2><h3 id="数据预处理">数据预处理</h3><p>剔除与测试集数据分布差异较大的数据，比如该赛题中周末和元旦节假日的情况，从而保证整体数据的一致性。</p><h3 id="强相关性特征">强相关性特征</h3><p>强相关性信息主要产生于不同天的同一个时间段，这道题就是使用了前n天相同时间段的进出站流量作为特征。分别构造了10分钟粒度和1小时粒度两个角度。又因为前后时间段流量有波动，又添加了前某个时间段和后某个时间段。也就是说，不仅使用前第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 天的相同时间段的数据，还要统计第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 天的相同时间段的前一个时间段的数据。</p><h2 id="4-模型训练">4 模型训练</h2><h3 id="4-1-LightGBM">4.1 LightGBM</h3><p>树模型可以反馈重要性得分，由此可以进行特征筛选提取。</p><h3 id="4-2-时序模型">4.2 时序模型</h3><p>训练部分有一个特征重要的参数 <code>shuffle</code> 用于设置每轮(epoch)迭代前是否对数据进行打散操作。 默认为 <code>False</code>。</p><h2 id="5-强化学习">5 强化学习</h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;Competition10-全球城市计算AI挑战赛&quot;&gt;Competition10-全球城市计算AI挑战赛&lt;/h2&gt;
-&lt;h2 id=&quot;全球城市计算AI挑战赛&quot;&gt;全球城市计算AI挑战赛&lt;/h2&gt;
-&lt;h2 id=&quot;1-赛题理解&quot;&gt;1 赛题理解&lt;/h2&gt;
-&lt;h2 id=&quot;</summary>
-      
-    
-    
-    
-    <category term="竞赛" scheme="http://example.com/categories/%E7%AB%9E%E8%B5%9B/"/>
-    
-    
-    <category term="特征工程，时间序列" scheme="http://example.com/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%EF%BC%8C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97/"/>
     
   </entry>
   
